@@ -7,4 +7,11 @@ module.exports = ({ env }) => ({
   webhooks: {
     populateRelations: env.bool('WEBHOOKS_POPULATE_RELATIONS', false),
   },
+  settings: {
+    // ... другие настройки ...
+    session: {
+      // Добавьте ключи приложения сюда
+      keys: ['myKeyA', 'myKeyB'],
+    },
+  },
 });
