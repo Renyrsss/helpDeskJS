@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ernar_and_timurs",
+  "info": {
+    "singularName": "ernar-and-timur",
+    "pluralName": "ernar-and-timurs",
+    "displayName": "Ernar and Timur",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userName": {
+      "type": "string"
+    },
+    "userPhone": {
+      "type": "string"
+    },
+    "userSide": {
+      "type": "string"
+    },
+    "userComment": {
+      "type": "text"
+    },
+    "userQuery": {
+      "type": "string"
+    },
+    "Done": {
+      "type": "boolean"
+    }
+  }
+}
