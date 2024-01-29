@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log(item.value + ' Ernar and TIMUR');
                             admin = '/api/ernar-and-timurs';
                         }
-                        else if(item.id == 'skud-p'){
+                        else if(item.id == 'skud-p' || item.id == 'camera' ){
                             CHAT_ID = 379626029;
                             console.log(item.value + ' KUAT');
                             admin = '/api/kuats';
