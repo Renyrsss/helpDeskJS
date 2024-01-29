@@ -10,28 +10,23 @@
     "strapi": "strapi"
   },
   "dependencies": {
-    "@strapi/plugin-cloud": "4.16.2",
-    "@strapi/plugin-color-picker": "^4.16.2",
-    "@strapi/plugin-i18n": "4.16.2",
-    "@strapi/plugin-users-permissions": "4.16.2",
-    "@strapi/strapi": "4.16.2",
+    "@strapi/plugin-cloud": "4.17.0",
+    "@strapi/plugin-i18n": "4.17.0",
+    "@strapi/plugin-users-permissions": "4.17.0",
+    "@strapi/strapi": "4.17.0",
     "better-sqlite3": "8.6.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
-    "strapi-plugin-comment-manager": "^1.0.17",
-    "strapi-plugin-comments": "^2.2.15",
+    "strapi-plugin-content-tags": "^1.0.1",
     "strapi-plugin-graphs-builder": "^1.0.0",
-    "strapi-plugin-notes": "^1.1.2",
-    "strapi-plugin-plausible": "^1.0.6",
-    "strapi-plugin-todo": "^0.0.10",
     "styled-components": "5.3.3"
   },
   "author": {
     "name": "A Strapi developer"
   },
   "strapi": {
-    "uuid": "fe126801-30fd-4941-a789-b72993995dd2"
+    "uuid": "8d3cc1af-3c1a-43af-bbda-a13c5746f5b6"
   },
   "engines": {
     "node": ">=18.0.0 <=20.x.x",

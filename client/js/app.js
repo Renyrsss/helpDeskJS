@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log(item.value + ' Baha');
                             admin = '/api/bahadors';
                         }
-                        else if(item.id == 'skud' ||item.id == 'PO' ||item.id == 'printer' ||item.id == 'PCR'){
+                        else if(item.id == 'skud' ||item.id == 'PO' ||item.id == 'printer' || item.id == 'PCR' || item.id == 'printerCard'){
                             CHAT_ID = 1034957720;
                             console.log(item.value + ' Ernar and TIMUR');
                             admin = '/api/ernar-and-timurs';
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 massage +=  `<b>Телеофн : ${inputs[0].value}</b>\n`
                 massage += `<b>Комментарий : ${textArea.value}</b>\n`;
                 massage += `<b>Запрос : ${query}</b>\n`;
-                axios.post(`http://localhost:1337${admin}`,{
+                axios.post(`http://192.168.101.25:1337${admin}`,{
                     data:{
                         userName : inputs[1].value,
                         userPhone : inputs[0].value,
@@ -72,6 +72,21 @@ document.addEventListener("DOMContentLoaded", function () {
                     textArea.value = '';
                     success.style.display = 'block';
                     successImg.classList.add('successLoadingActive');
+
+
+                    axios.post(URI_API,{
+                            chat_id:CHAT_ID,
+                            parse_mode: 'html',
+                            text:massage
+                        })
+                        .then((res) => {
+                            
+                        })
+                        .catch((err) =>{
+                            console.log(err);
+                        })
+
+
                     setTimeout(() => {
                         success.style.display = 'none'
                         successImg.classList.remove('successLoadingActive');

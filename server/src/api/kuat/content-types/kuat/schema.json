@@ -10,7 +10,26 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "content-tags": {
+      "fieldName": "Tags",
+      "tags": {
+        "None": {
+          "color": "neutral"
+        },
+        "Done": {
+          "color": "success"
+        },
+        "In progress": {
+          "color": "primary"
+        },
+        "Error": {
+          "color": "danger"
+        }
+      },
+      "defaultTag": "None"
+    }
+  },
   "attributes": {
     "userName": {
       "type": "string"
@@ -27,8 +46,14 @@
     "userQuery": {
       "type": "string"
     },
-    "Done": {
-      "type": "boolean"
+    "Progress": {
+      "type": "enumeration",
+      "enum": [
+        "Сделано",
+        "Новая заявка",
+        "не Сделано"
+      ],
+      "default": "Новая заявка"
     }
   }
 }
