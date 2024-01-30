@@ -28,23 +28,23 @@ document.addEventListener("DOMContentLoaded", function () {
                     if(item.checked){
                         query = item.value
                         console.log(item);
-                        if(item.id == 'MIS' ||item.id == '1C' ||item.id == 'Damumed'){
+                        if(item.id == 'MIS' ||item.id == '1C' ){
                             CHAT_ID = 203995378;
                             console.log(item.value + ' SAID');
                             admin = '/api/saids';
                         }
                         else if(item.id == 'LIS' ||item.id == 'mzrk' ||item.id == 'Damumed'){
-                            CHAT_ID = 912058859;
+                            CHAT_ID = 345485747;
                             console.log(item.value + ' Baha');
                             admin = '/api/bahadors';
                         }
                         else if(item.id == 'skud' ||item.id == 'PO' ||item.id == 'printer' || item.id == 'PCR' || item.id == 'printerCard'){
-                            CHAT_ID = 1034957720;
+                            CHAT_ID = -4135994432;
                             console.log(item.value + ' Ernar and TIMUR');
                             admin = '/api/ernar-and-timurs';
                         }
                         else if(item.id == 'skud-p' || item.id == 'camera' ){
-                            CHAT_ID = 379626029;
+                            CHAT_ID = -4110461660;
                             console.log(item.value + ' KUAT');
                             admin = '/api/kuats';
                         }
