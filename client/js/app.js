@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log(item.value + ' SAID');
                             admin = '/api/saids';
                         }
-                        else if(item.id == 'LIS' ||item.id == 'mzrk' ||item.id == 'Damumed'){
+                        else if(item.id == 'lis' ||item.id == 'mzrk' ||item.id == 'Damumed'){
                             CHAT_ID = 345485747;
                             console.log(item.value + ' Baha');
                             admin = '/api/bahadors';
