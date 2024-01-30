@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             admin = '/api/saids';
                         }
                         else if(item.id == 'lis' ||item.id == 'mzrk' ||item.id == 'Damumed'){
-                            CHAT_ID = 345485747;
+                            CHAT_ID = -4169255350;
                             console.log(item.value + ' Baha');
                             admin = '/api/bahadors';
                         }
