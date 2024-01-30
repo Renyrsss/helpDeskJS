@@ -11,24 +11,7 @@
     "draftAndPublish": true
   },
   "pluginOptions": {
-    "content-tags": {
-      "fieldName": "Tags",
-      "tags": {
-        "None": {
-          "color": "neutral"
-        },
-        "Done": {
-          "color": "success"
-        },
-        "In progress": {
-          "color": "primary"
-        },
-        "Error": {
-          "color": "danger"
-        }
-      },
-      "defaultTag": "None"
-    }
+
   },
   "attributes": {
     "userName": {
