@@ -20,6 +20,7 @@
     "react-router-dom": "5.3.4",
     "strapi-plugin-content-tags": "^1.0.1",
     "strapi-plugin-graphs-builder": "^1.0.0",
+    "strapi-plugin-import-export-entries": "^1.23.1",
     "styled-components": "5.3.3"
   },
   "author": {

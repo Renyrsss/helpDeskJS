@@ -7,6 +7,7 @@ import i18N from "@strapi/plugin-i18n/strapi-admin";
 import usersPermissions from "@strapi/plugin-users-permissions/strapi-admin";
 import contentTags from "strapi-plugin-content-tags/strapi-admin";
 import graphsBuilder from "strapi-plugin-graphs-builder/strapi-admin";
+import importExportEntries from "strapi-plugin-import-export-entries/strapi-admin";
 import { renderAdmin } from "@strapi/strapi/admin";
 
 import customisations from "../../src/admin/app.js";
@@ -20,5 +21,6 @@ renderAdmin(document.getElementById("strapi"), {
     "users-permissions": usersPermissions,
     "content-tags": contentTags,
     "graphs-builder": graphsBuilder,
+    "import-export-entries": importExportEntries,
   },
 });
