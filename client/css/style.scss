@@ -226,10 +226,12 @@ textarea{
         bottom: 0;
         display: flex;
         justify-content: center;
-        margin-bottom: -450px;
+        
+        margin-bottom: -550px;
 
 
         img{
+            width: 300px;
             
         }
     }
@@ -238,7 +240,7 @@ textarea{
 .successLoadingActive{
         animation-name: successLoading;
         animation-duration: 3.4s;
-        animation-timing-function: linear;
+        animation-timing-function: ease-in-out;
         animation-iteration-count:1;
         animation-direction: normal;
         animation-play-state: running;

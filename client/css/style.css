@@ -89,7 +89,6 @@ body {
 .header {
   padding-top: 30px;
   padding-bottom: 30px;
-
 }
 .header__img {
   display: inline-block;
@@ -266,12 +265,16 @@ textarea {
   bottom: 0;
   display: flex;
   justify-content: center;
-  margin-bottom: -450px;
+  margin-bottom: -550px;
 }
+.success__img img {
+  width: 300px;
+}
+
 .successLoadingActive {
   animation-name: successLoading;
   animation-duration: 3.4s;
-  animation-timing-function: linear;
+  animation-timing-function: ease-in-out;
   animation-iteration-count: 1;
   animation-direction: normal;
   animation-play-state: running;
