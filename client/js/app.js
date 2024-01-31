@@ -48,6 +48,11 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log(item.value + ' KUAT');
                             admin = '/api/kuats';
                         }
+                        else if(item.id == 'skud-p'){
+                            CHAT_ID = -4110461660;
+                            console.log(item.value + ' KUAT');
+                            admin = '/api/skud-zaprosy-help-desks';
+                        }
                     }
                 })
                 
