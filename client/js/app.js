@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             admin = '/api/kuats';
                         }
                         else if(item.id == 'skud-p'){
-                            CHAT_ID = -4110461660;
+                            CHAT_ID = -4196356902;
                             console.log(item.value + ' KUAT');
                             admin = '/api/skud-zaprosy-help-desks';
                         }
