@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "skud_zaprosy_help_desks",
+  "info": {
+    "singularName": "skud-zaprosy-help-desk",
+    "pluralName": "skud-zaprosy-help-desks",
+    "displayName": "скуд запросы HelpDesk"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userName": {
+      "type": "string"
+    },
+    "userPhone": {
+      "type": "string"
+    },
+    "userSide": {
+      "type": "string"
+    },
+    "userComment": {
+      "type": "text"
+    },
+    "userQuery": {
+      "type": "string"
+    },
+    "Progress": {
+      "type": "enumeration",
+      "enum": [
+        "Сделано",
+        "Новая заявка",
+        "не Сделано"
+      ],
+      "default": "Новая заявка"
+    }
+  }
+}
