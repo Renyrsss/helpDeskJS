@@ -833,7 +833,8 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
       [
         '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
         '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435 \u0421\u0434\u0435\u043B\u0430\u043D\u043E'
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
@@ -876,7 +877,8 @@ export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
       [
         '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
         '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435 \u0421\u0434\u0435\u043B\u0430\u043D\u043E'
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
@@ -919,7 +921,8 @@ export interface ApiKuatKuat extends Schema.CollectionType {
       [
         '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
         '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435 \u0421\u0434\u0435\u043B\u0430\u043D\u043E'
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
@@ -954,7 +957,8 @@ export interface ApiSaidSaid extends Schema.CollectionType {
       [
         '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
         '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435 \u0421\u0434\u0435\u043B\u0430\u043D\u043E'
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
@@ -975,6 +979,7 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
     singularName: 'skud-zaprosy-help-desk';
     pluralName: 'skud-zaprosy-help-desks';
     displayName: '\u0441\u043A\u0443\u0434 \u0437\u0430\u043F\u0440\u043E\u0441\u044B HelpDesk';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -989,7 +994,8 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
       [
         '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
         '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435 \u0421\u0434\u0435\u043B\u0430\u043D\u043E'
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;

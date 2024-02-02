@@ -10,9 +10,7 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {
-
-  },
+  "pluginOptions": {},
   "attributes": {
     "userName": {
       "type": "string"
@@ -34,7 +32,8 @@
       "enum": [
         "Сделано",
         "Новая заявка",
-        "не Сделано"
+        "невыполнимо ",
+        "в работе"
       ],
       "default": "Новая заявка"
     }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "skud-zaprosy-help-desk",
     "pluralName": "skud-zaprosy-help-desks",
-    "displayName": "скуд запросы HelpDesk"
+    "displayName": "скуд запросы HelpDesk",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -31,7 +32,8 @@
       "enum": [
         "Сделано",
         "Новая заявка",
-        "не Сделано"
+        "невыполнимо ",
+        "в работе"
       ],
       "default": "Новая заявка"
     }
