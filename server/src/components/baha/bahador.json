@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_baha_bahadors",
+  "info": {
+    "displayName": "Bahador",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "userName": {
+      "type": "string"
+    },
+    "userQuery": {
+      "type": "string"
+    },
+    "userPhone": {
+      "type": "string"
+    },
+    "userComment": {
+      "type": "string"
+    }
+  }
+}
