@@ -936,6 +936,36 @@ export interface ApiKuatKuat extends Schema.CollectionType {
   };
 }
 
+export interface ApiNewUserNewUser extends Schema.CollectionType {
+  collectionName: 'new_users';
+  info: {
+    singularName: 'new-user';
+    pluralName: 'new-users';
+    displayName: 'new user';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    user: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::new-user.new-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::new-user.new-user',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSaidSaid extends Schema.CollectionType {
   collectionName: 'saids';
   info: {
@@ -1039,6 +1069,7 @@ declare module '@strapi/types' {
       'api::bahador.bahador': ApiBahadorBahador;
       'api::ernar-and-timur.ernar-and-timur': ApiErnarAndTimurErnarAndTimur;
       'api::kuat.kuat': ApiKuatKuat;
+      'api::new-user.new-user': ApiNewUserNewUser;
       'api::said.said': ApiSaidSaid;
       'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk': ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk;
     }
