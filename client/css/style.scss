@@ -259,3 +259,84 @@ textarea{
         margin-bottom: -450px;
     }
 }
+
+
+
+
+.main {
+
+    &__search {
+        margin-bottom: 30px;
+    }
+
+    &__searchInput {
+        width: 100%;
+        border: 1px solid gray;
+        padding: 14px;
+        border-radius: 14px;
+    }
+
+    &__catalog {
+        background: white;
+        padding: 15px;
+        border-radius: 14px;
+        border: 1px solid gray;
+        max-height: 600px;
+        overflow: auto;
+    }
+
+    &__catalogItem {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid gray;
+        padding-top: 10px;
+        align-items: center;
+    }
+
+    &__catalogId {
+        flex: 0 0 20%;
+        text-align: center;
+    }
+
+    &__catalogItemName {
+        flex: 0 0 20%;
+        text-align: center;
+    }
+
+    &__catalogItemComment {
+        flex: 0 0 20%;
+    }
+
+    &__catalogItemProgress {
+        flex: 0 0 20%;
+        text-align: center;
+    }
+    &__catalogItemProgressbar{
+
+        // border: 2px solid green;
+        // color: green;
+        // padding: 5px;
+        // border-radius: 10px;
+    }
+}
+
+.greenDone{
+    border: 2px solid green;
+    color: green;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.yellowInWork{
+    border: 2px solid rgb(184, 184, 57);
+    color: rgb(184, 184, 57);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.blueNewQuery{
+    border: 2px solid rgb(57, 116, 184);
+    color: rgb(57, 116, 184);
+    padding: 5px;
+    border-radius: 10px;
+}

@@ -11,13 +11,20 @@ document.addEventListener("DOMContentLoaded", function () {
     preloadImage("../img/image\ 1.svg","../img/image2.png","../img/image3.png", imageContainer[0]);
 
     let radioInput = document.querySelectorAll('.radioInput');
-    console.log(radioInput);
+    // console.log(radioInput);
     let inputs = document.querySelectorAll('.main__inputs');
     let textArea = document.querySelector('textarea');
-    console.log(textArea);
+    // console.log(textArea);
     let btn = document.querySelector('.btn__submit');
-    console.log(btn);
+    // console.log(btn);
     let admin = null;
+
+
+
+
+
+
+
     btn.addEventListener('click',(e)=>{
         e.preventDefault();
         let res = checkInputs(inputs,textArea);
@@ -105,7 +112,76 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
     })
-    console.log(inputs);
+    // console.log(inputs);
+    let searchInput = document.querySelector('.main__searchInput');
+
+    let userDataQuery = getUsersQuery();
+    let userPhones = [];
+    let catalog = document.querySelector('.main__catalog');
+    userDataQuery.then(function(res){
+        // console.log(res);
+        searchInput.addEventListener('input',(e)=>{
+            catalog.innerHTML = ``;
+            userPhones = [];
+            res.forEach(item => {
+                console.log(item);
+            // console.log(item.userPhone);
+            if(item.userPhone.indexOf(e.target.value) === 0){
+                // console.log('true');
+                userPhones.push(item)
+            }
+            
+
+        })
+        
+        if(e.target.value.length >=5){
+            userPhones.forEach(item=>{
+                if(item.Progress == 'Сделано'){
+                    catalog.innerHTML += `
+                    <div class="main__catalogItem ">
+                        <p class="main__catalogId"> ${item.userName}</p>
+                        <p class="main__catalogDate">Дата ${item.createdAt.slice(0,-14)}</p>
+                        <p class="main__catalogItemName">${item.userQuery}</p>
+                        <p class="main__catalogItemComment">${item.userComment}</p>
+                        <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar greenDone">${item.Progress}</span></p>
+                    </div>
+                    `;
+                }
+                else if(item.Progress == 'в работе'){
+                    catalog.innerHTML += `
+                    <div class="main__catalogItem ">
+                        <p class="main__catalogId"> ${item.userName}</p>
+                        <p class="main__catalogDate">Дата ${item.createdAt.slice(0,-14)}</p>
+                        <p class="main__catalogItemName">${item.userQuery}</p>
+                        <p class="main__catalogItemComment">${item.userComment}</p>
+                        <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar yellowInWork">${item.Progress}</span></p>
+                    </div>
+                    `;
+                }
+                else if (item.Progress == 'Новая заявка'){
+                    catalog.innerHTML += `
+                    <div class="main__catalogItem ">
+                        <p class="main__catalogId"> ${item.userName}</p>
+                        <p class="main__catalogDate">Дата ${item.createdAt.slice(0,-14)}</p>
+                        <p class="main__catalogItemName">${item.userQuery}</p>
+                        <p class="main__catalogItemComment">${item.userComment}</p>
+                        <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar blueNewQuery">${item.Progress}</span></p>
+                    </div>
+                    `;
+                }
+        })
+        }
+    })
+        
+    })
+
+
+
+
+
+
+    // ------------------------------------
+
 
 
 
@@ -167,3 +243,54 @@ function checkInputs(inputs,textArea){
     }
     return res;
 }
+
+
+async function getUsersQuery(){
+
+            let userObj = [];
+
+            axios.get('http://192.168.101.25:1337/api/bahadors?pagination[pageSize]=1000&sort=createdAt:desc').then(function(res){
+                res.data['data'].map(item => {
+                    userObj.push(item.attributes)
+                })
+            });
+            axios.get('http://192.168.101.25:1337/api/ernar-and-timurs?pagination[pageSize]=1000&sort=createdAt:desc').then(function(res){
+                res.data['data'].map(item => {
+                    userObj.push(item.attributes)
+                })
+            })
+            await axios.get('http://192.168.101.25:1337/api/kuats?pagination[pageSize]=1000&sort=createdAt:desc').then(function(res){
+                res.data['data'].map(item => {
+                    userObj.push(item.attributes)
+                })
+            })
+
+            axios.get('http://192.168.101.25:1337/api/skud-zaprosy-help-desks?pagination[pageSize]=1000&sort=createdAt:desc').then(function(res){
+                res.data['data'].map(item => {
+                    userObj.push(item.attributes)
+                })
+            })
+            axios.get('http://192.168.101.25:1337/api/saids?pagination[pageSize]=1000&sort=createdAt:desc').then(function(res){
+                res.data['data'].map(item => {
+                    userObj.push(item.attributes)
+                })
+            })
+
+            // console.log(userObj);
+        return userObj;
+}
+
+
+// async function changeCotalog(items){
+//     let changeCatalog = document.querySelector('.main_catalogItem');
+
+//     changeCatalog.innerHTML += `
+//                 <div class="main__catalogItem">
+//                     <p class="main__catalogId"> id : 144</p>
+//                     <p class="main__catalogDate">Дата ${items.createdAt}</p>
+//                     <p class="main__catalogItemName">${items.userName}</p>
+//                     <p class="main__catalogItemComment">${items.userComment}</p>
+//                     <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar">${items.Progress}</span></p>
+//                 </div>
+//     `
+// }

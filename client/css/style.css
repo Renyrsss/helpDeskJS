@@ -293,3 +293,62 @@ textarea {
     margin-bottom: -450px;
   }
 }
+.main__search {
+  margin-bottom: 30px;
+}
+.main__searchInput {
+  width: 100%;
+  border: 1px solid gray;
+  padding: 14px;
+  border-radius: 14px;
+}
+.main__catalog {
+  background: white;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid gray;
+  max-height: 600px;
+  overflow: auto;
+}
+.main__catalogItem {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid gray;
+  padding-top: 10px;
+  align-items: center;
+}
+.main__catalogId {
+  flex: 0 0 20%;
+  text-align: center;
+}
+.main__catalogItemName {
+  flex: 0 0 20%;
+  text-align: center;
+}
+.main__catalogItemComment {
+  flex: 0 0 20%;
+}
+.main__catalogItemProgress {
+  flex: 0 0 20%;
+  text-align: center;
+}
+.greenDone {
+  border: 2px solid green;
+  color: green;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.yellowInWork {
+  border: 2px solid rgb(184, 184, 57);
+  color: rgb(184, 184, 57);
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.blueNewQuery {
+  border: 2px solid rgb(57, 116, 184);
+  color: rgb(57, 116, 184);
+  padding: 5px;
+  border-radius: 10px;
+}
