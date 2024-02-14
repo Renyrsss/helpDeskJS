@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const URI_API =  `https://api.telegram.org/bot${token}/sendMessage`;
     let success = document.querySelector('.success');
     let successImg = document.querySelector('.success__img');
-
-
+    let checkedOrNot = document.querySelector('.checkedOrNot');
+    let inputsRadio = document.querySelectorAll('.inputMar')
     let imageContainer = document.getElementsByTagName("body");
 
     preloadImage("../img/image\ 1.svg","../img/image2.png","../img/image3.png", imageContainer[0]);
@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     btn.addEventListener('click',(e)=>{
         e.preventDefault();
-        let res = checkInputs(inputs,textArea);
+        let res = checkInputs(inputs,textArea,checkedOrNot,radioInput);
         console.log(res);
             if(res){
                 let query ;
@@ -217,7 +217,7 @@ function hideLoadingOverlay() {
 }
 
 
-function checkInputs(inputs,textArea){
+function checkInputs(inputs,textArea,checkedOrNot,inputsRadio){
     let res = true
     inputs.forEach(element => {
         if(element.value.trim() == ''){
@@ -240,6 +240,24 @@ function checkInputs(inputs,textArea){
     }
     else{
         textArea.style.cssText = `none`
+    }
+
+    console.log(inputsRadio);
+    let radioFalse = false;
+    inputsRadio.forEach(item =>{
+        if(item.checked == false){
+            console.log(item.checked);
+        }
+        else if(item.checked){
+            radioFalse = true
+        }
+    })
+    if(radioFalse){
+        checkedOrNot.style.cssText = ``;
+    }
+    else{
+        checkedOrNot.style.cssText = `border:4px solid red`;
+        res = false
     }
     return res;
 }
