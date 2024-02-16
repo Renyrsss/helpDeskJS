@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log(item.value + ' Baha');
                             admin = '/api/bahadors';
                         }
-                        else if(item.id == 'skud' ||item.id == 'PO' ||item.id == 'printer' || item.id == 'PCR' || item.id == 'printerCard'){
+                        else if(item.id == 'skud' ||item.id == 'PO' ||item.id == 'printer' || item.id == 'PCR' || item.id == 'printerCard' || item.id == 'DOC'){
                             CHAT_ID = -4135994432;
                             console.log(item.value + ' Ernar and TIMUR');
                             admin = '/api/ernar-and-timurs';
