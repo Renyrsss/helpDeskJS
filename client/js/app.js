@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 radioInput.forEach(item => {
                     if(item.checked){
                         query = item.value
-                        console.log(item);
+                            console.log(item);
                         if(item.id == 'MIS' ||item.id == '1C' ){
                             CHAT_ID = 203995378;
                             console.log(item.value + ' SAID');
