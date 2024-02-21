@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let checkedOrNot = document.querySelector('.checkedOrNot');
     let inputsRadio = document.querySelectorAll('.inputMar')
     let imageContainer = document.getElementsByTagName("body");
-
+    let userDataQuery = getUsersQuery();
     preloadImage("../img/image\ 1.svg","../img/image2.png","../img/image3.png", imageContainer[0]);
 
     let radioInput = document.querySelectorAll('.radioInput');
@@ -102,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     setTimeout(() => {
                         success.style.display = 'none'
                         successImg.classList.remove('successLoadingActive');
-                        getUsersQuery();
+                        userDataQuery = getUsersQuery();
                     }, 3400);
                 })
                 .catch((err) =>{
@@ -116,7 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
     // console.log(inputs);
     let searchInput = document.querySelector('.main__searchInput');
 
-    let userDataQuery = getUsersQuery();
     let userPhones = [];
     let catalog = document.querySelector('.main__catalog');
     userDataQuery.then(function(res){
