@@ -102,8 +102,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     setTimeout(() => {
                         success.style.display = 'none'
                         successImg.classList.remove('successLoadingActive');
-                        userDataQuery = getUsersQuery();
+                        
                     }, 3400);
+                })
+                .then(()=>{
+                    userDataQuery = '';
+                    userDataQuery = getUsersQuery();
                 })
                 .catch((err) =>{
                     console.log(err);
