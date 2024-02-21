@@ -108,6 +108,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 .then(()=>{
                     userDataQuery = '';
                     userDataQuery = getUsersQuery();
+                    
+                })
+                .then(()=>{
+                    queryListAdd()
                 })
                 .catch((err) =>{
                     console.log(err);
@@ -122,7 +126,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let userPhones = [];
     let catalog = document.querySelector('.main__catalog');
-    userDataQuery.then(function(res){
+    function queryListAdd(){
+        userDataQuery.then(function(res){
         // console.log(res);
         searchInput.addEventListener('input',(e)=>{
             catalog.innerHTML = ``;
@@ -178,7 +183,10 @@ document.addEventListener("DOMContentLoaded", function () {
     })
         
     })
+}
 
+    
+    queryListAdd();
 
 
 
