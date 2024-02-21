@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     setTimeout(() => {
                         success.style.display = 'none'
                         successImg.classList.remove('successLoadingActive');
+                        getUsersQuery();
                     }, 3400);
                 })
                 .catch((err) =>{
