@@ -103,6 +103,7 @@ body {
   border: 5px solid white;
 }
 .header__title {
+  color: rgb(12, 100, 100);
   font-weight: bold;
   font-size: 18px;
   text-align: center;
@@ -121,6 +122,7 @@ body {
 }
 
 .main__first {
+  color: rgb(12, 100, 100);
   border: 5px solid white;
   margin-bottom: 35px;
   padding: 20px;
@@ -142,6 +144,7 @@ body {
   background-color: white;
 }
 .main__firstQuestion {
+  color: rgb(12, 100, 100);
   font-weight: bold;
 }
 
@@ -153,14 +156,15 @@ body {
 .btn__submit {
   color: white;
   border-radius: 10px;
-  border: none;
-  background-color: #7078FF;
-  font-size: 20px;
-  padding: 5px 40px;
-  transition: background-color 0.3s ease-in-out 0s;
+  border: 2px solid white;
+  background-color: #274152;
+  font-size: 24px;
+  padding: 10px 45px;
+  transition: background-color 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s;
   cursor: pointer;
 }
 .btn__submit:hover {
+  transform: scale(1.05);
   background-color: #151744;
 }
 
@@ -351,4 +355,49 @@ textarea {
   color: rgb(57, 116, 184);
   padding: 5px;
   border-radius: 10px;
+}
+
+.slider__row {
+  display: flex;
+}
+
+.main {
+  width: 1200px;
+  margin: 0 auto;
+  flex: 0 0 100%;
+}
+
+.slider {
+  width: 1200px;
+  overflow: hidden;
+}
+
+.columns__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.columns__column {
+  flex: 0 1 49%;
+}
+
+body {
+  background: url("../img/wallpaperflare.jpg") center no-repeat;
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+
+label {
+  color: rgb(12, 100, 100);
+}
+
+@media (hover: none) {
+  body {
+    background: url("../img/wallpaperflare.jpg") center/auto 100% no-repeat;
+    -o-object-fit: contain;
+       object-fit: contain;
+  }
+  .columns__row {
+    display: block;
+  }
 }

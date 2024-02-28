@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let inputsRadio = document.querySelectorAll('.inputMar')
     let imageContainer = document.getElementsByTagName("body");
     let userDataQuery = getUsersQuery();
-    preloadImage("../img/image\ 1.svg","../img/image2.png","../img/image3.png", imageContainer[0]);
+    // preloadImage("../img/image\ 1.svg","../img/image2.png","../img/image3.png", imageContainer[0]);
 
     let radioInput = document.querySelectorAll('.radioInput');
     // console.log(radioInput);
@@ -199,34 +199,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-async function preloadImage(imageSrc1,imageSrc2,imageSrc3, container) {
 
-
-    let image3 = new Image();
-    image3.src = imageSrc3;
-    image3.onload = function () {
-        container.style.backgroundImage = "url('" + imageSrc1 + "'),url('" + imageSrc2 + "'),url('" + imageSrc3 + "')";
-    };
-
-
-    return new Promise((resolve) => {
-        let image1 = new Image();
-        image1.src = imageSrc1;
-        image1.onload = function () {
-            container.style.backgroundImage = "url('" + imageSrc1 + "'),url('" + imageSrc2 + "'),url('" + imageSrc3 + "')";
-                hideLoadingOverlay();
-                resolve();
-            };
-    });
-}
-
-function hideLoadingOverlay() {
-    let loadingOverlay = document.getElementById("loading-overlay");
-    // let content = document.getElementById("content");
-
-    loadingOverlay.style.display = "none";
-    // content.style.display = "block";
-}
 
 
 function checkInputs(inputs,textArea,checkedOrNot,inputsRadio){
