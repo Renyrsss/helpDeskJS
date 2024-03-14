@@ -320,6 +320,7 @@ textarea {
   border-bottom: 1px solid gray;
   padding-top: 10px;
   align-items: center;
+  transition: all ease-in 0.3s 1s;
 }
 .main__catalogId {
   flex: 0 0 20%;
@@ -400,4 +401,19 @@ label {
   .columns__row {
     display: block;
   }
+}
+.btn__submitStyle {
+  color: white;
+  border-radius: 10px;
+  border: 2px solid white;
+  background-color: #274152;
+  font-size: 18px;
+  padding: 10px 45px;
+  transition: background-color 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s;
+  cursor: pointer;
+  margin-right: 14px;
+}
+.btn__submitStyle:hover {
+  transform: scale(1.05);
+  background-color: #151744;
 }
