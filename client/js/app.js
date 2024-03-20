@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log(item.value + ' KUAT');
                             admin = '/api/kuats';
                         }
-                        else if(item.id == 'skud-p'){
+                        else if(item.id == 'skud-p' || item.id == 'simbase-t'){
                             CHAT_ID = -4196356902;
                             console.log(item.value + ' KUAT');
                             admin = '/api/skud-zaprosy-help-desks';
