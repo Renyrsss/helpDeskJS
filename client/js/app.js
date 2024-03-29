@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log(item.value + ' Baha');
                             admin = '/api/bahadors';
                         }
-                        else if(item.id == 'skud' ||item.id == 'PO' ||item.id == 'printer' || item.id == 'PCR' || item.id == 'printerCard' || item.id == 'DOC' || item.id == 'webCabel'){
+                        else if(item.id == 'skud' ||item.id == 'PO' ||item.id == 'printer' || item.id == 'PCR' || item.id == 'printerCard'  || item.id == 'webCabel'){
                             CHAT_ID = -4135994432;
                             console.log(item.value + ' Ernar and TIMUR');
                             admin = '/api/ernar-and-timurs';
@@ -55,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
                             console.log(item.value + ' KUAT');
                             admin = '/api/kuats';
                         }
-                        else if(item.id == 'skud-p' || item.id == 'simbase-t'){
+                        else if(item.id == 'skud-p' || item.id == 'simbase-t' || item.id == 'DOC'){
                             CHAT_ID = -4196356902;
                             console.log(item.value + ' KUAT');
                             admin = '/api/skud-zaprosy-help-desks';
