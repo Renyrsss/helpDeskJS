@@ -133,7 +133,7 @@ document.addEventListener("DOMContentLoaded", function () {
             catalog.innerHTML = ``;
             userPhones = [];
             res.forEach(item => {
-                console.log(item);
+                // console.log(item);
             // console.log(item.userPhone);
             if(item.userPhone.indexOf(e.target.value) === 0){
                 // console.log('true');
@@ -145,11 +145,12 @@ document.addEventListener("DOMContentLoaded", function () {
         // .slice(0,-14)
         if(e.target.value.length >=5){
             userPhones.forEach(item=>{
+                console.log(item);
                 if(item.Progress == 'Сделано'){
                     catalog.innerHTML += `
                     <div class="main__catalogItem ">
                         <p class="main__catalogId"> ${item.userName}</p>
-                        <p class="main__catalogDate">Дата ${item.createdAt}</p>
+                        <p class="main__catalogDate">Дата ${item.createdAt.slice(0,-14)}</p>
                         <p class="main__catalogItemName">${item.userQuery}</p>
                         <p class="main__catalogItemComment">${item.userComment}</p>
                         <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar greenDone">${item.Progress}</span></p>
@@ -171,7 +172,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     catalog.innerHTML += `
                     <div class="main__catalogItem ">
                         <p class="main__catalogId"> ${item.userName}</p>
-                        <p class="main__catalogDate">Дата ${item.createdAt}</p>
+                        <p class="main__catalogDate">Дата ${item.createdAt.slice(0,-14)}</p>
                         <p class="main__catalogItemName">${item.userQuery}</p>
                         <p class="main__catalogItemComment">${item.userComment}</p>
                         <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar blueNewQuery">${item.Progress}</span></p>
