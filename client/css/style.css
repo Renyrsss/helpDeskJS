@@ -401,6 +401,10 @@ label {
   .columns__row {
     display: block;
   }
+  .main__catalogItem {
+    display: flex;
+    flex-direction: column;
+  }
 }
 .btn__submitStyle {
   color: white;
