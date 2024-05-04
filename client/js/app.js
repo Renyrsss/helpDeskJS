@@ -1,23 +1,18 @@
 document.addEventListener("DOMContentLoaded", function () {
     const token = '6515245927:AAExFk8USVwQ2IVcwtqszfutM-hqgbfp0Dg';
     let CHAT_ID ;
-    const URI_API =  `https://api.telegram.org/bot${token}/sendMessage`;
+    const URI_API = `https://api.telegram.org/bot${token}/sendMessage`;
     let success = document.querySelector('.success');
     let successImg = document.querySelector('.success__img');
-    let checkedOrNot = document.querySelector('.checkedOrNot');
-    let inputsRadio = document.querySelectorAll('.inputMar')
-    let imageContainer = document.getElementsByTagName("body");
-    let userDataQuery = getUsersQuery();
-    // preloadImage("../img/image\ 1.svg","../img/image2.png","../img/image3.png", imageContainer[0]);
-
-    let radioInput = document.querySelectorAll('.radioInput');
-    // console.log(radioInput);
-    let inputs = document.querySelectorAll('.main__inputs');
-    let textArea = document.querySelector('textarea');
-    // console.log(textArea);
-    let btn = document.querySelector('.btn__submit');
-    // console.log(btn);
-    let admin = null;
+let checkedOrNot = document.querySelector('.checkedOrNot');
+let inputsRadio = document.querySelectorAll('.inputMar')
+let imageContainer = document.getElementsByTagName("body");
+let userDataQuery = getUsersQuery();
+let radioInput = document.querySelectorAll('.radioInput');
+let inputs = document.querySelectorAll('.main__inputs');
+let textArea = document.querySelector('textarea');
+let btn = document.querySelector('.btn__submit');
+let admin = null;
 
 
 
@@ -121,32 +116,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
             }
     })
-    // console.log(inputs);
     let searchInput = document.querySelector('.main__searchInput');
-
     let userPhones = [];
     let catalog = document.querySelector('.main__catalog');
     function queryListAdd(){
         userDataQuery.then(function(res){
-        // console.log(res);
         searchInput.addEventListener('input',(e)=>{
             catalog.innerHTML = ``;
             userPhones = [];
             res.forEach(item => {
-                // console.log(item);
-            // console.log(item.userPhone);
             if(item.userPhone.indexOf(e.target.value) === 0){
-                // console.log('true');
                 userPhones.push(item)
             }
             
 
         })
-        // .slice(0,-14)
         if(e.target.value.length >=5){
             userPhones.forEach(item=>{
                 let hours = " время: "+(+item.createdAt.slice(11,-11) + 5) + ":" + item.createdAt.slice(14,-8);
-                // console.log(hours);
                 if(item.Progress == 'Сделано'){
                     catalog.innerHTML += `
                     <div class="main__catalogItem ">
@@ -189,13 +176,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     
     queryListAdd();
-
-
-
-
-
-    // ------------------------------------
-
 
 
 
@@ -281,21 +261,6 @@ async function getUsersQuery(){
                 })
             })
 
-            // console.log(userObj);
         return userObj;
 }
 
-
-// async function changeCotalog(items){
-//     let changeCatalog = document.querySelector('.main_catalogItem');
-
-//     changeCatalog.innerHTML += `
-//                 <div class="main__catalogItem">
-//                     <p class="main__catalogId"> id : 144</p>
-//                     <p class="main__catalogDate">Дата ${items.createdAt}</p>
-//                     <p class="main__catalogItemName">${items.userName}</p>
-//                     <p class="main__catalogItemComment">${items.userComment}</p>
-//                     <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar">${items.Progress}</span></p>
-//                 </div>
-//     `
-// }
