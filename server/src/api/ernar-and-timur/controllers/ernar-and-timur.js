@@ -22,7 +22,7 @@ module.exports = createCoreController(
             where: {
               id: item.id,
             },
-            populate: ["createdBy"],
+            populate: ["updatedBy"],
           });
 
           data[index].attributes.createdBy = {
@@ -30,9 +30,8 @@ module.exports = createCoreController(
             // firstname: page.createdBy.firstname,
             // lastname: page.createdBy.lastname,
 
-            // change the page into article so it work
-            firstname: article.createdBy.firstname,
-            lastname: article.createdBy.lastname,
+            firstname: article.updatedBy.firstname,
+            lastname: article.updatedBy.lastname,
           };
         })
       );
