@@ -27,7 +27,6 @@ module.exports = createCoreController(
 
           data[index].attributes.createdBy = {
             // id: page.createdBy.id,
-            // not work on me
             // firstname: page.createdBy.firstname,
             // lastname: page.createdBy.lastname,
 
