@@ -362,211 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiBahadorBahador extends Schema.CollectionType {
-  collectionName: 'bahadors';
-  info: {
-    singularName: 'bahador';
-    pluralName: 'bahadors';
-    displayName: '\u0411\u0430\u0445\u043E\u0434\u044B\u0440';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    userName: Attribute.String;
-    userPhone: Attribute.String;
-    userSide: Attribute.String;
-    userComment: Attribute.Text;
-    userQuery: Attribute.String;
-    Progress: Attribute.Enumeration<
-      [
-        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
-        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
-        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
-      ]
-    > &
-      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::bahador.bahador',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::bahador.bahador',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
-  collectionName: 'ernar_and_timurs';
-  info: {
-    singularName: 'ernar-and-timur';
-    pluralName: 'ernar-and-timurs';
-    displayName: '\u0415\u0440\u043D\u0430\u0440 \u0438 \u0416\u0430\u043D\u0434\u043E\u0441';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    userName: Attribute.String;
-    userPhone: Attribute.String;
-    userSide: Attribute.String;
-    userComment: Attribute.Text;
-    userQuery: Attribute.String;
-    Progress: Attribute.Enumeration<
-      [
-        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
-        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
-        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
-      ]
-    > &
-      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::ernar-and-timur.ernar-and-timur',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::ernar-and-timur.ernar-and-timur',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiKuatKuat extends Schema.CollectionType {
-  collectionName: 'kuats';
-  info: {
-    singularName: 'kuat';
-    pluralName: 'kuats';
-    displayName: '\u041A\u0443\u0430\u0442 - \u043A\u0430\u043C\u0435\u0440\u044B \u0432\u0438\u0434\u0435\u043E\u043D\u0430\u0431\u043B\u044E\u0434\u0435\u043D\u0438\u044F';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    userName: Attribute.String;
-    userPhone: Attribute.String;
-    userSide: Attribute.String;
-    userComment: Attribute.Text;
-    userQuery: Attribute.String;
-    Progress: Attribute.Enumeration<
-      [
-        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
-        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
-        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
-      ]
-    > &
-      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSaidSaid extends Schema.CollectionType {
-  collectionName: 'saids';
-  info: {
-    singularName: 'said';
-    pluralName: 'saids';
-    displayName: '\u0421\u0430\u0438\u0434';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    userName: Attribute.String;
-    userPhone: Attribute.String;
-    userSide: Attribute.String;
-    userComment: Attribute.Text;
-    userQuery: Attribute.String;
-    Progress: Attribute.Enumeration<
-      [
-        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
-        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
-        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
-      ]
-    > &
-      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-  };
-}
-
-export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
-  extends Schema.CollectionType {
-  collectionName: 'skud_zaprosy_help_desks';
-  info: {
-    singularName: 'skud-zaprosy-help-desk';
-    pluralName: 'skud-zaprosy-help-desks';
-    displayName: '\u0441\u043A\u0443\u0434 - \u0441\u0438\u043C\u0431\u044D\u0439\u0441 -  \u0437\u0430\u043F\u0440\u043E\u0441\u044B HelpDesk';
-    description: '';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    userName: Attribute.String;
-    userPhone: Attribute.String;
-    userSide: Attribute.String;
-    userComment: Attribute.Text;
-    userQuery: Attribute.String;
-    Progress: Attribute.Enumeration<
-      [
-        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
-        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
-        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
-        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
-      ]
-    > &
-      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -1017,6 +812,211 @@ export interface PluginGraphsBuilderGraph extends Schema.CollectionType {
   };
 }
 
+export interface ApiBahadorBahador extends Schema.CollectionType {
+  collectionName: 'bahadors';
+  info: {
+    singularName: 'bahador';
+    pluralName: 'bahadors';
+    displayName: '\u0411\u0430\u0445\u043E\u0434\u044B\u0440';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::bahador.bahador',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::bahador.bahador',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
+  collectionName: 'ernar_and_timurs';
+  info: {
+    singularName: 'ernar-and-timur';
+    pluralName: 'ernar-and-timurs';
+    displayName: '\u0415\u0440\u043D\u0430\u0440 \u0438 \u0416\u0430\u043D\u0434\u043E\u0441';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ernar-and-timur.ernar-and-timur',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ernar-and-timur.ernar-and-timur',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiKuatKuat extends Schema.CollectionType {
+  collectionName: 'kuats';
+  info: {
+    singularName: 'kuat';
+    pluralName: 'kuats';
+    displayName: '\u041A\u0443\u0430\u0442 - \u043A\u0430\u043C\u0435\u0440\u044B \u0432\u0438\u0434\u0435\u043E\u043D\u0430\u0431\u043B\u044E\u0434\u0435\u043D\u0438\u044F';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSaidSaid extends Schema.CollectionType {
+  collectionName: 'saids';
+  info: {
+    singularName: 'said';
+    pluralName: 'saids';
+    displayName: '\u0421\u0430\u0438\u0434';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
+  extends Schema.CollectionType {
+  collectionName: 'skud_zaprosy_help_desks';
+  info: {
+    singularName: 'skud-zaprosy-help-desk';
+    pluralName: 'skud-zaprosy-help-desks';
+    displayName: '\u0441\u043A\u0443\u0434 - \u0441\u0438\u043C\u0431\u044D\u0439\u0441 -  \u0437\u0430\u043F\u0440\u043E\u0441\u044B HelpDesk';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1027,11 +1027,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::bahador.bahador': ApiBahadorBahador;
-      'api::ernar-and-timur.ernar-and-timur': ApiErnarAndTimurErnarAndTimur;
-      'api::kuat.kuat': ApiKuatKuat;
-      'api::said.said': ApiSaidSaid;
-      'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk': ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -1041,6 +1036,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::graphs-builder.graph': PluginGraphsBuilderGraph;
+      'api::bahador.bahador': ApiBahadorBahador;
+      'api::ernar-and-timur.ernar-and-timur': ApiErnarAndTimurErnarAndTimur;
+      'api::kuat.kuat': ApiKuatKuat;
+      'api::said.said': ApiSaidSaid;
+      'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk': ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk;
     }
   }
 }
