@@ -7,36 +7,36 @@
 const { createCoreController } = require("@strapi/strapi").factories;
 
 // module.exports = createCoreController("api::ernar-and-timur.ernar-and-timur");
-module.exports = createCoreController(
-  "api::ernar-and-timur.ernar-and-timur",
-  ({ strapi }) => ({
-    async find(ctx) {
-      // Calling the default core action
-      const { data, meta } = await super.find(ctx);
+module.exports = createCoreController("api::ernar-and-timur.ernar-and-timur");
 
-      const query = strapi.db.query("api::ernar-and-timur.ernar-and-timur");
+// ,
+// ({ strapi }) => ({
+//   async find(ctx) {
+//     // Calling the default core action
+//     const { data, meta } = await super.find(ctx);
 
-      await Promise.all(
-        data.map(async (item, index) => {
-          const article = await query.findOne({
-            where: {
-              id: item.id,
-            },
-            populate: ["updatedBy"],
-          });
+//     const query = strapi.db.query("api::ernar-and-timur.ernar-and-timur");
 
-          data[index].attributes.createdBy = {
-            // id: page.createdBy.id,
-            // firstname: page.createdBy.firstname,
-            // lastname: page.createdBy.lastname,
+//     await Promise.all(
+//       data.map(async (item, index) => {
+//         const article = await query.findOne({
+//           where: {
+//             id: item.id,
+//           },
+//           populate: ["updatedBy"],
+//         });
 
-            firstname: article.updatedBy.firstname,
-            lastname: article.updatedBy.lastname,
-          };
-        })
-      );
+//         data[index].attributes.createdBy = {
+//           // id: page.createdBy.id,
+//           // firstname: page.createdBy.firstname,
+//           // lastname: page.createdBy.lastname,
 
-      return { data, meta };
-    },
-  })
-);
+//           firstname: article.updatedBy.firstname,
+//           lastname: article.updatedBy.lastname,
+//         };
+//       })
+//     );
+
+//     return { data, meta };
+//   },
+// })
