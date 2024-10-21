@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "kuats",
+  "collectionName": "santehniks",
   "info": {
-    "singularName": "kuat",
-    "pluralName": "kuats",
-    "displayName": "Куат - камеры видеонаблюдения",
+    "singularName": "santehnik",
+    "pluralName": "santehniks",
+    "displayName": "Сантехник",
     "description": ""
   },
   "options": {
@@ -37,8 +37,19 @@
       ],
       "default": "Новая заявка"
     },
-    "ourComment": {
+    "OurComment": {
       "type": "text"
+    },
+    "executor": {
+      "type": "enumeration",
+      "enum": [
+        "Кикаят Калиаскар",
+        "Каз Муханбек",
+        "Шермаганбетов Абиль Аймуратович",
+        "Супеков Ербол Ельтаевич",
+        "Абилдинов Жумадилда Картаевич ДКХО",
+        "Болегенов Сакапберген ННМЦ"
+      ]
     }
   }
 }

@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "kuats",
+  "collectionName": "plotniks",
   "info": {
-    "singularName": "kuat",
-    "pluralName": "kuats",
-    "displayName": "Куат - камеры видеонаблюдения",
+    "singularName": "plotnik",
+    "pluralName": "plotniks",
+    "displayName": "Вентиляция",
     "description": ""
   },
   "options": {
@@ -34,11 +34,18 @@
         "Новая заявка",
         "невыполнимо ",
         "в работе"
-      ],
-      "default": "Новая заявка"
+      ]
     },
-    "ourComment": {
+    "OurComment": {
       "type": "text"
+    },
+    "executor": {
+      "type": "enumeration",
+      "enum": [
+        "test",
+        "test1",
+        "test2"
+      ]
     }
   }
 }

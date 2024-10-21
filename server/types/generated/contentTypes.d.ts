@@ -822,7 +822,6 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -839,6 +838,7 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    ourComment: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -846,12 +846,72 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
       'api::bahador.bahador',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::bahador.bahador',
       'oneToOne',
       'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiElektrikElektrik extends Schema.CollectionType {
+  collectionName: 'elektriks';
+  info: {
+    singularName: 'elektrik';
+    pluralName: 'elektriks';
+    displayName: '\u042D\u043B\u0435\u043A\u0442\u0440\u0438\u043A';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    OurComment: Attribute.Text;
+    executor: Attribute.Enumeration<
+      [
+        '\u0411\u0430\u0437\u0433\u0443\u0442\u0434\u0438\u043D\u043E\u0432 \u0420\u0430\u0448\u0438\u0442 \u0420\u0430\u0444\u0430\u0438\u043B\u043E\u0432\u0438\u0447',
+        '\u0410\u0431\u0435\u043D\u043E\u0432 \u0416\u0430\u043D\u0430\u0439 \u0410\u043A\u043F\u0430\u043D\u0431\u0430\u0435\u0432\u0438\u0447',
+        '\u041D\u0430\u0443\u0448\u0435\u043D\u043E\u0432 \u0420\u0438\u043D\u0430\u0442 \u0411\u043E\u043B\u0430\u0442\u043E\u0432\u0438\u0447',
+        '\u041D\u0443\u0440\u0430\u0448\u043E\u0432 \u0410\u0434\u0430\u0439 \u0428\u0430\u043C\u0448\u0430\u0434\u0438\u043D\u043E\u0432\u0438\u0447',
+        '\u041C\u044B\u0440\u0437\u0430\u0431\u0435\u043A\u043E\u0432 \u041D\u0443\u0440\u0438\u0434\u0438\u043D \u0428\u0435\u0440\u0435\u0445\u0430\u043D\u043E\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
+        '\u0411\u0435\u043A\u0431\u0430\u0435\u0432 \u0411\u0435\u043A\u0437\u0430\u0442 \u041A\u0430\u043B\u0438\u0443\u043B\u044B \u0414\u041A\u0425\u041E',
+        '\u0411\u0443\u0445\u0430\u043D\u043E\u0432 \u0411\u0430\u0443\u0440\u0436\u0430\u043D \u0423\u0440\u0430\u0437\u0431\u0435\u043A\u043E\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
+        '\u0423\u0442\u0435\u0433\u0435\u043D\u043E\u0432 \u041A\u0443\u0440\u043C\u0430\u043D\u0430\u043B\u0438 \u0422\u0430\u043D\u0438\u0440\u0431\u0435\u0440\u0433\u0435\u043D\u043E\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
+        '\u0421\u043C\u0438\u0440\u043D\u043E\u0432 \u0421\u0435\u0440\u0433\u0435\u0439 \u0412\u0438\u043A\u0442\u043E\u0440\u043E\u0432\u0438\u0447 - \u0414\u043D\u0435\u0432\u043D\u043E\u0439 \u044D\u043B\u0435\u043A\u0442\u0440\u0438\u043A'
+      ]
     >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::elektrik.elektrik',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::elektrik.elektrik',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -865,7 +925,6 @@ export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -882,6 +941,7 @@ export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    ourComment: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -889,12 +949,51 @@ export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
       'api::ernar-and-timur.ernar-and-timur',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::ernar-and-timur.ernar-and-timur',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiKartridzhiKartridzhi extends Schema.CollectionType {
+  collectionName: 'kartridzhis';
+  info: {
+    singularName: 'kartridzhi';
+    pluralName: 'kartridzhis';
+    displayName: '\u043A\u0430\u0440\u0442\u0440\u0438\u0434\u0436\u0438';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userSurname: Attribute.String;
+    userSide: Attribute.String;
+    cardModel: Attribute.String;
+    userMail: Attribute.Email;
+    userSign: Attribute.Media;
+    cardCount: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::kartridzhi.kartridzhi',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::kartridzhi.kartridzhi',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -908,7 +1007,6 @@ export interface ApiKuatKuat extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -925,11 +1023,59 @@ export interface ApiKuatKuat extends Schema.CollectionType {
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    ourComment: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'>;
-    updatedBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'>;
+    createdBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiPlotnikPlotnik extends Schema.CollectionType {
+  collectionName: 'plotniks';
+  info: {
+    singularName: 'plotnik';
+    pluralName: 'plotniks';
+    displayName: '\u0412\u0435\u043D\u0442\u0438\u043B\u044F\u0446\u0438\u044F';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    >;
+    OurComment: Attribute.Text;
+    executor: Attribute.Enumeration<['test', 'test1', 'test2']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::plotnik.plotnik',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::plotnik.plotnik',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -943,7 +1089,6 @@ export interface ApiSaidSaid extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -960,11 +1105,69 @@ export interface ApiSaidSaid extends Schema.CollectionType {
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    ourComment: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'>;
-    updatedBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'>;
+    createdBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSantehnikSantehnik extends Schema.CollectionType {
+  collectionName: 'santehniks';
+  info: {
+    singularName: 'santehnik';
+    pluralName: 'santehniks';
+    displayName: '\u0421\u0430\u043D\u0442\u0435\u0445\u043D\u0438\u043A';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    OurComment: Attribute.Text;
+    executor: Attribute.Enumeration<
+      [
+        '\u041A\u0438\u043A\u0430\u044F\u0442 \u041A\u0430\u043B\u0438\u0430\u0441\u043A\u0430\u0440',
+        '\u041A\u0430\u0437 \u041C\u0443\u0445\u0430\u043D\u0431\u0435\u043A',
+        '\u0428\u0435\u0440\u043C\u0430\u0433\u0430\u043D\u0431\u0435\u0442\u043E\u0432 \u0410\u0431\u0438\u043B\u044C \u0410\u0439\u043C\u0443\u0440\u0430\u0442\u043E\u0432\u0438\u0447',
+        '\u0421\u0443\u043F\u0435\u043A\u043E\u0432 \u0415\u0440\u0431\u043E\u043B \u0415\u043B\u044C\u0442\u0430\u0435\u0432\u0438\u0447',
+        '\u0410\u0431\u0438\u043B\u0434\u0438\u043D\u043E\u0432 \u0416\u0443\u043C\u0430\u0434\u0438\u043B\u0434\u0430 \u041A\u0430\u0440\u0442\u0430\u0435\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
+        '\u0411\u043E\u043B\u0435\u0433\u0435\u043D\u043E\u0432 \u0421\u0430\u043A\u0430\u043F\u0431\u0435\u0440\u0433\u0435\u043D \u041D\u041D\u041C\u0426'
+      ]
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::santehnik.santehnik',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::santehnik.santehnik',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -979,7 +1182,6 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -996,6 +1198,7 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
       ]
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    ourComment: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1003,12 +1206,98 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
       'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk',
       'oneToOne',
       'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTekstDlyaDokumentaQrTekstDlyaDokumentaQr
+  extends Schema.CollectionType {
+  collectionName: 'tekst_dlya_dokumenta_qrs';
+  info: {
+    singularName: 'tekst-dlya-dokumenta-qr';
+    pluralName: 'tekst-dlya-dokumenta-qrs';
+    displayName: '\u0422\u0435\u043A\u0441\u0442 \u0434\u043B\u044F \u0434\u043E\u043A\u0443\u043C\u0435\u043D\u0442\u0430 qr';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    mainText: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::tekst-dlya-dokumenta-qr.tekst-dlya-dokumenta-qr',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::tekst-dlya-dokumenta-qr.tekst-dlya-dokumenta-qr',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVentilyaczionshhikVentilyaczionshhik
+  extends Schema.CollectionType {
+  collectionName: 'ventilyaczionshhiks';
+  info: {
+    singularName: 'ventilyaczionshhik';
+    pluralName: 'ventilyaczionshhiks';
+    displayName: '\u0412\u0435\u043D\u0442\u0438\u043B\u044F\u0446\u0438\u043E\u043D\u0449\u0438\u043A';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u0432\u044B\u043F\u043E\u043B\u043D\u0438\u043C\u043E ',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    OurComment: Attribute.Text;
+    executor: Attribute.Enumeration<
+      [
+        '\u0410\u043F\u043F\u0430\u0441\u043E\u0432 \u041D\u0443\u0440\u043B\u0430\u043D \u0421\u0435\u0440\u0438\u043A\u0436\u0430\u043D\u043E\u0432\u0438\u0447',
+        '\u0421\u0430\u0433\u0438\u043D\u0434\u044B\u043A\u043E\u0432 \u0411\u0435\u0440\u0438\u043A \u0421\u0443\u043B\u0442\u0430\u043D\u043E\u0432\u0438\u0447',
+        '\u0420\u044B\u043A\u043E\u0432 \u0412\u0438\u0442\u0430\u043B\u0438\u0439 \u0410\u043B\u0435\u043A\u0441\u0435\u0435\u0432\u0438\u0447',
+        '\u0411\u043E\u0448\u0430\u043D\u043E\u0432 \u0415\u0440\u0431\u043E\u043B \u0416\u043E\u043B\u0442\u0430\u0435\u0432\u0438\u0447'
+      ]
     >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::ventilyaczionshhik.ventilyaczionshhik',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::ventilyaczionshhik.ventilyaczionshhik',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1032,10 +1321,16 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::graphs-builder.graph': PluginGraphsBuilderGraph;
       'api::bahador.bahador': ApiBahadorBahador;
+      'api::elektrik.elektrik': ApiElektrikElektrik;
       'api::ernar-and-timur.ernar-and-timur': ApiErnarAndTimurErnarAndTimur;
+      'api::kartridzhi.kartridzhi': ApiKartridzhiKartridzhi;
       'api::kuat.kuat': ApiKuatKuat;
+      'api::plotnik.plotnik': ApiPlotnikPlotnik;
       'api::said.said': ApiSaidSaid;
+      'api::santehnik.santehnik': ApiSantehnikSantehnik;
       'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk': ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk;
+      'api::tekst-dlya-dokumenta-qr.tekst-dlya-dokumenta-qr': ApiTekstDlyaDokumentaQrTekstDlyaDokumentaQr;
+      'api::ventilyaczionshhik.ventilyaczionshhik': ApiVentilyaczionshhikVentilyaczionshhik;
     }
   }
 }

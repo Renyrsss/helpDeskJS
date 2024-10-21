@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "kuats",
+  "collectionName": "ventilyaczionshhiks",
   "info": {
-    "singularName": "kuat",
-    "pluralName": "kuats",
-    "displayName": "Куат - камеры видеонаблюдения",
-    "description": ""
+    "singularName": "ventilyaczionshhik",
+    "pluralName": "ventilyaczionshhiks",
+    "displayName": "Вентиляционщик"
   },
   "options": {
     "draftAndPublish": true
@@ -37,8 +36,17 @@
       ],
       "default": "Новая заявка"
     },
-    "ourComment": {
+    "OurComment": {
       "type": "text"
+    },
+    "executor": {
+      "type": "enumeration",
+      "enum": [
+        "Аппасов Нурлан Серикжанович",
+        "Сагиндыков Берик Султанович",
+        "Рыков Виталий Алексеевич",
+        "Бошанов Ербол Жолтаевич"
+      ]
     }
   }
 }

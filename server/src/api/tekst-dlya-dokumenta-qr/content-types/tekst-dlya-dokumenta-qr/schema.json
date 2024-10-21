@@ -1,0 +1,18 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tekst_dlya_dokumenta_qrs",
+  "info": {
+    "singularName": "tekst-dlya-dokumenta-qr",
+    "pluralName": "tekst-dlya-dokumenta-qrs",
+    "displayName": "Текст для документа qr"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "mainText": {
+      "type": "text"
+    }
+  }
+}

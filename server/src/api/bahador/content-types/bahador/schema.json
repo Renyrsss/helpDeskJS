@@ -8,8 +8,7 @@
     "description": ""
   },
   "options": {
-    "draftAndPublish": true,
-    "populateCreatorFields": true
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -30,8 +29,16 @@
     },
     "Progress": {
       "type": "enumeration",
-      "enum": ["Сделано", "Новая заявка", "невыполнимо ", "в работе"],
+      "enum": [
+        "Сделано",
+        "Новая заявка",
+        "невыполнимо ",
+        "в работе"
+      ],
       "default": "Новая заявка"
+    },
+    "ourComment": {
+      "type": "text"
     }
   }
 }

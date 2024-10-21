@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kartridzhis",
+  "info": {
+    "singularName": "kartridzhi",
+    "pluralName": "kartridzhis",
+    "displayName": "картриджи",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userName": {
+      "type": "string"
+    },
+    "userSurname": {
+      "type": "string"
+    },
+    "userSide": {
+      "type": "string"
+    },
+    "cardModel": {
+      "type": "string"
+    },
+    "userMail": {
+      "type": "email"
+    },
+    "userSign": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "cardCount": {
+      "type": "string"
+    }
+  }
+}
