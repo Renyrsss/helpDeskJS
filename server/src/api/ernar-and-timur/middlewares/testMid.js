@@ -5,7 +5,7 @@ module.exports = (config, { strapi }) => {
     if (!ctx.query.populate) {
       ctx.query.populate = ["createdBy", "updatedBy"];
     }
-
+    ("");
     await next();
   };
 };
