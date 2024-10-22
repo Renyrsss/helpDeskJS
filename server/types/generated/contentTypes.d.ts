@@ -839,6 +839,7 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
+    complexity: Attribute.Enumeration<['A', 'B', 'C', 'D']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -867,6 +868,7 @@ export interface ApiElektrikElektrik extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -904,14 +906,12 @@ export interface ApiElektrikElektrik extends Schema.CollectionType {
       'api::elektrik.elektrik',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::elektrik.elektrik',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 
@@ -942,6 +942,7 @@ export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
+    complexity: Attribute.Enumeration<['A', 'B', 'C', 'D']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1024,6 +1025,7 @@ export interface ApiKuatKuat extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
+    complexity: Attribute.Enumeration<['A', 'B', 'C', 'D']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1106,6 +1108,7 @@ export interface ApiSaidSaid extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
+    complexity: Attribute.Enumeration<['A', 'B', 'C', 'D']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1199,6 +1202,8 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
+    complexity: Attribute.Enumeration<['A', 'B', 'C', 'D']> &
+      Attribute.DefaultTo<'A'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
