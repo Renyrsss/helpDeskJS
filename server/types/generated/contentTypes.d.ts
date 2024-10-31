@@ -822,6 +822,7 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -849,14 +850,12 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
       'api::bahador.bahador',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::bahador.bahador',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 
@@ -927,6 +926,7 @@ export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -954,14 +954,12 @@ export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
       'api::ernar-and-timur.ernar-and-timur',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::ernar-and-timur.ernar-and-timur',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 
@@ -1012,6 +1010,7 @@ export interface ApiKuatKuat extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -1035,10 +1034,8 @@ export interface ApiKuatKuat extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
+    createdBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'>;
+    updatedBy: Attribute.Relation<'api::kuat.kuat', 'oneToOne', 'admin::user'>;
   };
 }
 
@@ -1097,6 +1094,7 @@ export interface ApiSaidSaid extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -1120,10 +1118,8 @@ export interface ApiSaidSaid extends Schema.CollectionType {
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'> &
-      Attribute.Private;
+    createdBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'>;
+    updatedBy: Attribute.Relation<'api::said.said', 'oneToOne', 'admin::user'>;
   };
 }
 
@@ -1193,6 +1189,7 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -1220,14 +1217,12 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
       'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 
