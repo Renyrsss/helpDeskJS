@@ -1,9 +1,24 @@
-'use strict';
+// 'use strict';
 
-/**
- * aidar router
- */
+// /**
+//  * aidar router
+//  */
 
-const { createCoreRouter } = require('@strapi/strapi').factories;
+// const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::aidar.aidar');
+// module.exports = createCoreRouter('api::aidar.aidar');
+
+"use strict";
+
+const { createCoreRouter } = require("@strapi/strapi").factories;
+
+module.exports = createCoreRouter("api::aidar.aidar", {
+  config: {
+    find: {
+      middlewares: ["api::aidar.test-mid"],
+    },
+    findOne: {
+      middlewares: ["api::aidar.test-mid"],
+    },
+  },
+});
