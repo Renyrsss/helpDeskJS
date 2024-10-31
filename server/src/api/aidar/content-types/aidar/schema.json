@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "aidars",
+  "info": {
+    "singularName": "aidar",
+    "pluralName": "aidars",
+    "displayName": "Айдар"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userName": {
+      "type": "string"
+    },
+    "userPhone": {
+      "type": "string"
+    },
+    "userSide": {
+      "type": "string"
+    },
+    "userComment": {
+      "type": "text"
+    },
+    "userQuery": {
+      "type": "string"
+    },
+    "Progress": {
+      "type": "enumeration",
+      "enum": [
+        "Сделано",
+        "Новая заявка",
+        "некорректная заявка",
+        "в работе"
+      ],
+      "default": "Новая заявка"
+    },
+    "ourComment": {
+      "type": "string"
+    },
+    "complexity": {
+      "type": "enumeration",
+      "enum": [
+        "A",
+        "B",
+        "C"
+      ],
+      "default": "B"
+    }
+  }
+}

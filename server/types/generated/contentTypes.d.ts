@@ -812,6 +812,52 @@ export interface PluginGraphsBuilderGraph extends Schema.CollectionType {
   };
 }
 
+export interface ApiAidarAidar extends Schema.CollectionType {
+  collectionName: 'aidars';
+  info: {
+    singularName: 'aidar';
+    pluralName: 'aidars';
+    displayName: '\u0410\u0439\u0434\u0430\u0440';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
+    ourComment: Attribute.String;
+    complexity: Attribute.Enumeration<['A', 'B', 'C']> &
+      Attribute.DefaultTo<'B'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::aidar.aidar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::aidar.aidar',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiBahadorBahador extends Schema.CollectionType {
   collectionName: 'bahadors';
   info: {
@@ -1329,6 +1375,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'plugin::graphs-builder.graph': PluginGraphsBuilderGraph;
+      'api::aidar.aidar': ApiAidarAidar;
       'api::bahador.bahador': ApiBahadorBahador;
       'api::elektrik.elektrik': ApiElektrikElektrik;
       'api::ernar-and-timur.ernar-and-timur': ApiErnarAndTimurErnarAndTimur;
