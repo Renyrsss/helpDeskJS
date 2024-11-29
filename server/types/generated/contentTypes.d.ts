@@ -821,6 +821,7 @@ export interface ApiAidarAidar extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -847,14 +848,12 @@ export interface ApiAidarAidar extends Schema.CollectionType {
       'api::aidar.aidar',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::aidar.aidar',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 
@@ -1130,6 +1129,51 @@ export interface ApiPlotnikPlotnik extends Schema.CollectionType {
   };
 }
 
+export interface ApiRustamRustam extends Schema.CollectionType {
+  collectionName: 'rustams';
+  info: {
+    singularName: 'rustam';
+    pluralName: 'rustams';
+    displayName: '\u0420\u0443\u0441\u0442\u0430\u043C';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String;
+    userPhone: Attribute.String;
+    userSide: Attribute.String;
+    userComment: Attribute.Text;
+    userQuery: Attribute.String;
+    Progress: Attribute.Enumeration<
+      [
+        '\u0421\u0434\u0435\u043B\u0430\u043D\u043E',
+        '\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
+        '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
+      ]
+    >;
+    ourComment: Attribute.Text;
+    complexity: Attribute.Enumeration<['A', 'B', 'C']> &
+      Attribute.DefaultTo<'C'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::rustam.rustam',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::rustam.rustam',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSaidSaid extends Schema.CollectionType {
   collectionName: 'saids';
   info: {
@@ -1382,6 +1426,7 @@ declare module '@strapi/types' {
       'api::kartridzhi.kartridzhi': ApiKartridzhiKartridzhi;
       'api::kuat.kuat': ApiKuatKuat;
       'api::plotnik.plotnik': ApiPlotnikPlotnik;
+      'api::rustam.rustam': ApiRustamRustam;
       'api::said.said': ApiSaidSaid;
       'api::santehnik.santehnik': ApiSantehnikSantehnik;
       'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk': ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk;
