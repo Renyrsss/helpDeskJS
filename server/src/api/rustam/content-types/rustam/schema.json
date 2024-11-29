@@ -7,7 +7,8 @@
     "displayName": "Рустам"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": true,
+    "populateCreatorFields": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -28,23 +29,14 @@
     },
     "Progress": {
       "type": "enumeration",
-      "enum": [
-        "Сделано",
-        "Новая заявка",
-        "некорректная заявка",
-        "в работе"
-      ]
+      "enum": ["Сделано", "Новая заявка", "некорректная заявка", "в работе"]
     },
     "ourComment": {
       "type": "text"
     },
     "complexity": {
       "type": "enumeration",
-      "enum": [
-        "A",
-        "B",
-        "C"
-      ],
+      "enum": ["A", "B", "C"],
       "default": "C"
     }
   }
