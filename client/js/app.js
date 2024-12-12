@@ -37,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
                         console.log(item.value + " Baha");
                         admin = "/api/bahadors";
                     } else if (
-                        item.id == "skud" ||
                         item.id == "PO" ||
                         item.id == "printer" ||
                         item.id == "PCR" ||
@@ -52,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         console.log(item.value + " KUAT");
                         admin = "/api/kuats";
                     } else if (
+                        item.id == "skud" ||
                         item.id == "skud-p" ||
                         item.id.includes("simbase") ||
                         item.id == "DOC"
