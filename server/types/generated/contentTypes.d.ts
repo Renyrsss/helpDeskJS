@@ -914,7 +914,6 @@ export interface ApiElektrikElektrik extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -937,7 +936,7 @@ export interface ApiElektrikElektrik extends Schema.CollectionType {
         '\u0411\u0430\u0437\u0433\u0443\u0442\u0434\u0438\u043D\u043E\u0432 \u0420\u0430\u0448\u0438\u0442 \u0420\u0430\u0444\u0430\u0438\u043B\u043E\u0432\u0438\u0447',
         '\u0410\u0431\u0435\u043D\u043E\u0432 \u0416\u0430\u043D\u0430\u0439 \u0410\u043A\u043F\u0430\u043D\u0431\u0430\u0435\u0432\u0438\u0447',
         '\u041D\u0430\u0443\u0448\u0435\u043D\u043E\u0432 \u0420\u0438\u043D\u0430\u0442 \u0411\u043E\u043B\u0430\u0442\u043E\u0432\u0438\u0447',
-        '\u041D\u0443\u0440\u0430\u0448\u043E\u0432 \u0410\u0434\u0430\u0439 \u0428\u0430\u043C\u0448\u0430\u0434\u0438\u043D\u043E\u0432\u0438\u0447',
+        '\u0411\u0443\u043A\u0435\u043D\u043E\u0432 \u0411\u0435\u0439\u0431\u0443\u0442 \u0420\u0430\u0438\u0436\u0430\u043D\u043E\u0432\u0438\u0447',
         '\u041C\u044B\u0440\u0437\u0430\u0431\u0435\u043A\u043E\u0432 \u041D\u0443\u0440\u0438\u0434\u0438\u043D \u0428\u0435\u0440\u0435\u0445\u0430\u043D\u043E\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
         '\u0411\u0435\u043A\u0431\u0430\u0435\u0432 \u0411\u0435\u043A\u0437\u0430\u0442 \u041A\u0430\u043B\u0438\u0443\u043B\u044B \u0414\u041A\u0425\u041E',
         '\u0411\u0443\u0445\u0430\u043D\u043E\u0432 \u0411\u0430\u0443\u0440\u0436\u0430\u043D \u0423\u0440\u0430\u0437\u0431\u0435\u043A\u043E\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
@@ -952,12 +951,14 @@ export interface ApiElektrikElektrik extends Schema.CollectionType {
       'api::elektrik.elektrik',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::elektrik.elektrik',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1138,6 +1139,7 @@ export interface ApiRustamRustam extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -1163,14 +1165,12 @@ export interface ApiRustamRustam extends Schema.CollectionType {
       'api::rustam.rustam',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::rustam.rustam',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 
