@@ -56,9 +56,12 @@ document.addEventListener("DOMContentLoaded", function () {
                         item.id.includes("simbase") ||
                         item.id == "DOC"
                     ) {
-                        CHAT_ID = -4196356902;
-                        console.log(item.value + " KUAT");
-                        admin = "/api/skud-zaprosy-help-desks";
+                        // CHAT_ID = -4196356902;
+                        // console.log(item.value + " KUAT");
+                        // admin = "/api/skud-zaprosy-help-desks";
+                        CHAT_ID = -4169255350;
+                        console.log(item.value + " Baha");
+                        admin = "/api/bahadors";
                     }
                 }
             });
@@ -231,6 +234,7 @@ function checkInputs(inputs, textArea, checkedOrNot, inputsRadio) {
         checkedOrNot.style.cssText = `border:4px solid red`;
         res = false;
     }
+    lis;
     return res;
 }
 
