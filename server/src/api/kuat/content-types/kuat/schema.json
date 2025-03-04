@@ -40,9 +40,6 @@
       "type": "enumeration",
       "enum": ["A", "B", "C"],
       "default": "C"
-    },
-    "ProgressData": {
-      "type": "datetime"
     }
   }
 }
