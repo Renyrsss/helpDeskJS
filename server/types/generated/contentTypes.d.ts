@@ -887,7 +887,6 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
     ourComment: Attribute.Text;
     complexity: Attribute.Enumeration<['A', 'B', 'C']> &
       Attribute.DefaultTo<'C'>;
-    ProgressData: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -992,7 +991,6 @@ export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
     ourComment: Attribute.Text;
     complexity: Attribute.Enumeration<['A', 'B', 'C']> &
       Attribute.DefaultTo<'C'>;
-    ProgressData: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1076,7 +1074,6 @@ export interface ApiKuatKuat extends Schema.CollectionType {
     ourComment: Attribute.Text;
     complexity: Attribute.Enumeration<['A', 'B', 'C']> &
       Attribute.DefaultTo<'C'>;
-    ProgressData: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1204,7 +1201,6 @@ export interface ApiSaidSaid extends Schema.CollectionType {
     ourComment: Attribute.Text;
     complexity: Attribute.Enumeration<['A', 'B', 'C']> &
       Attribute.DefaultTo<'C'>;
-    ProgressData: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1299,7 +1295,6 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
     ourComment: Attribute.Text;
     complexity: Attribute.Enumeration<['A', 'B', 'C']> &
       Attribute.DefaultTo<'C'>;
-    ProgressData: Attribute.DateTime;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
