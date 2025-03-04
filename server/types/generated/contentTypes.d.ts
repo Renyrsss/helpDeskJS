@@ -1138,6 +1138,7 @@ export interface ApiRustamRustam extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: true;
+    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -1163,14 +1164,12 @@ export interface ApiRustamRustam extends Schema.CollectionType {
       'api::rustam.rustam',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
     updatedBy: Attribute.Relation<
       'api::rustam.rustam',
       'oneToOne',
       'admin::user'
-    > &
-      Attribute.Private;
+    >;
   };
 }
 
