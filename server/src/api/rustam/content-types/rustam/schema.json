@@ -36,7 +36,7 @@
     },
     "complexity": {
       "type": "enumeration",
-      "enum": ["A", "B", "C"],
+      "enum": ["A", "B", "C", "D - долгосрочный"],
       "default": "C"
     }
   }

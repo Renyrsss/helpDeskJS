@@ -839,7 +839,14 @@ export interface ApiAidarAidar extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.String;
-    complexity: Attribute.Enumeration<['A', 'B', 'C']> &
+    complexity: Attribute.Enumeration<
+      [
+        'A',
+        'B',
+        'C',
+        'D - \u0434\u043E\u043B\u0433\u043E\u0441\u0440\u043E\u0447\u043D\u044B\u0439'
+      ]
+    > &
       Attribute.DefaultTo<'B'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -885,7 +892,14 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
-    complexity: Attribute.Enumeration<['A', 'B', 'C']> &
+    complexity: Attribute.Enumeration<
+      [
+        'A',
+        'B',
+        'C',
+        'D - \u0434\u043E\u043B\u0433\u043E\u0441\u0440\u043E\u0447\u043D\u044B\u0439'
+      ]
+    > &
       Attribute.DefaultTo<'C'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -989,7 +1003,14 @@ export interface ApiErnarAndTimurErnarAndTimur extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
-    complexity: Attribute.Enumeration<['A', 'B', 'C']> &
+    complexity: Attribute.Enumeration<
+      [
+        'A',
+        'B',
+        'C',
+        'D - \u0434\u043E\u043B\u0433\u043E\u0441\u0440\u043E\u0447\u043D\u044B\u0439'
+      ]
+    > &
       Attribute.DefaultTo<'C'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1072,7 +1093,14 @@ export interface ApiKuatKuat extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
-    complexity: Attribute.Enumeration<['A', 'B', 'C']> &
+    complexity: Attribute.Enumeration<
+      [
+        'A',
+        'B',
+        'C',
+        'D - \u0434\u043E\u043B\u0433\u043E\u0441\u0440\u043E\u0447\u043D\u044B\u0439'
+      ]
+    > &
       Attribute.DefaultTo<'C'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1153,7 +1181,14 @@ export interface ApiRustamRustam extends Schema.CollectionType {
       ]
     >;
     ourComment: Attribute.Text;
-    complexity: Attribute.Enumeration<['A', 'B', 'C']> &
+    complexity: Attribute.Enumeration<
+      [
+        'A',
+        'B',
+        'C',
+        'D - \u0434\u043E\u043B\u0433\u043E\u0441\u0440\u043E\u0447\u043D\u044B\u0439'
+      ]
+    > &
       Attribute.DefaultTo<'C'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1199,7 +1234,14 @@ export interface ApiSaidSaid extends Schema.CollectionType {
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
-    complexity: Attribute.Enumeration<['A', 'B', 'C']> &
+    complexity: Attribute.Enumeration<
+      [
+        'A',
+        'B',
+        'C',
+        'D - \u0434\u043E\u043B\u0433\u043E\u0441\u0440\u043E\u0447\u043D\u044B\u0439'
+      ]
+    > &
       Attribute.DefaultTo<'C'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1293,7 +1335,14 @@ export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
     > &
       Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
-    complexity: Attribute.Enumeration<['A', 'B', 'C']> &
+    complexity: Attribute.Enumeration<
+      [
+        'A',
+        'B',
+        'C',
+        'D - \u0434\u043E\u043B\u0433\u043E\u0441\u0440\u043E\u0447\u043D\u044B\u0439'
+      ]
+    > &
       Attribute.DefaultTo<'C'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
