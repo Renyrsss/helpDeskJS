@@ -1,30 +1,28 @@
-@import '_null';
+@import "_null";
 
-body{
-    
+body {
     // background-image: url('../img/image\ 1.svg'), url('../img/image\ 2.svg'), url('../img/image\ 3.svg');
     background-repeat: no-repeat;
-    background-position: 0 0, -20px center ,  98% 80%;
+    background-position: 0 0, -20px center, 98% 80%;
     background-size: 100%, 200px, 150px;
-    background-color: #E3EAFF;
- 
+    background-color: #e3eaff;
 
     font-family: Arial, Helvetica, sans-serif;
 }
-.wrapper {}
+.wrapper {
+}
 
 .header {
     padding-top: 30px;
     padding-bottom: 30px;
 
     &__img {
-        
         display: inline-block;
         display: flex;
         justify-content: center;
         margin-bottom: 30px;
 
-        img{
+        img {
             background-color: rgba($color: #ffff, $alpha: 0.75);
             border-radius: 100%;
             padding: 20px;
@@ -37,9 +35,9 @@ body{
         font-weight: bold;
         font-size: 18px;
         text-align: center;
-        p{
+        p {
             border: 5px solid white;
-            background-color: rgba($color: #ffffff, $alpha: .45);
+            background-color: rgba($color: #ffffff, $alpha: 0.45);
             border-radius: 15px;
             padding: 20px;
         }
@@ -50,42 +48,37 @@ body{
     padding: 0 30px;
     max-width: 1000px;
     margin: 0 auto;
-
 }
 
 .main {
-
     &__first {
         color: rgb(12, 100, 100);
         border: 5px solid white;
         margin-bottom: 35px;
         padding: 20px;
         border-radius: 15px;
-        background-color: rgba($color: #ffffff, $alpha: .45);
+        background-color: rgba($color: #ffffff, $alpha: 0.45);
 
-        input,label{
+        input,
+        label {
             font-weight: bold;
         }
-        p{
+        p {
             font-weight: bold;
         }
     }
     &__inputs {
-            
-        border: 1px solid #D3D3D3;
+        border: 1px solid #d3d3d3;
         padding: 10px 20px;
         display: block;
         width: 100%;
         border-radius: 24px;
         background-color: #ffff;
-        }
+    }
     &__firstQuestion {
         color: rgb(12, 100, 100);
         font-weight: bold;
     }
-    
-
-
 }
 
 .btn {
@@ -95,63 +88,59 @@ body{
     &__submit {
         color: #ffff;
         border-radius: 10px;
-        border:  2px solid white;
+        border: 2px solid white;
         background-color: #274152;
         font-size: 24px;
         padding: 10px 45px;
-        transition: background-color  0.3s ease-in-out 0s , transform 0.3s ease-in-out 0s;
+        transition: background-color 0.3s ease-in-out 0s,
+            transform 0.3s ease-in-out 0s;
         cursor: pointer;
 
-        &:hover{
+        &:hover {
             transform: scale(1.05);
             background-color: #151744;
         }
     }
 }
 
-
-.inputMar{
+.inputMar {
     margin-top: 14px;
     display: flex;
 
-    input{
+    input {
         margin-right: 10px;
         display: inline-block;
     }
 
-    label{
+    label {
         display: block;
     }
 }
 
-textarea{
+textarea {
     margin-top: 20px;
     width: 100%;
     height: 100px;
     resize: none;
     padding: 10px;
-    border: 1px solid #D3D3D3;
+    border: 1px solid #d3d3d3;
     border-radius: 5px;
 }
 
-
-
-#loading-overlay{
+#loading-overlay {
     position: fixed;
     overflow: hidden;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    background-color: rgba($color: #ffffff, $alpha: .95);
-
+    background-color: rgba($color: #ffffff, $alpha: 0.95);
 }
 
 .overlay {
-    
     width: 100%;
     height: 100%;
-    
+
     display: flex;
     justify-content: center;
     align-items: center;
@@ -161,59 +150,53 @@ textarea{
         animation-name: loadingImg;
         animation-duration: 3s;
         animation-timing-function: linear;
-        animation-iteration-count:infinite;
+        animation-iteration-count: infinite;
         animation-direction: normal;
         animation-play-state: running;
         animation-delay: 0s;
         animation-fill-mode: none;
     }
 
-    &__loading{
+    &__loading {
         text-align: center;
         font-size: 24px;
         font-weight: bold;
         animation-name: loadingText;
         animation-duration: 1s;
         animation-timing-function: linear;
-        animation-iteration-count:infinite;
+        animation-iteration-count: infinite;
         animation-direction: normal;
         animation-play-state: running;
         animation-delay: 0s;
         animation-fill-mode: none;
-        
     }
 }
 
-
 @keyframes loadingText {
-    0%{
+    0% {
         transform: translateY(0);
     }
-    50%{
+    50% {
         transform: translateY(20px);
-        
     }
-    100%{
+    100% {
         transform: translateY(0);
     }
 }
 
 @keyframes loadingImg {
-        0% {
-                transform:rotate(0);
-            }
-        
-            50% {
-                transform: rotate(180deg);
-        
-            }
-        
-            100% {
-                transform: rotate(360deg);
-            }
+    0% {
+        transform: rotate(0);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
-
-
 
 .success {
     display: none;
@@ -229,52 +212,46 @@ textarea{
         bottom: 0;
         display: flex;
         justify-content: center;
-        
+
         margin-bottom: -550px;
 
-
-        img{
+        img {
             width: 300px;
-            
         }
     }
 }
 
-.successLoadingActive{
-        animation-name: successLoading;
-        animation-duration: 3.4s;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count:1;
-        animation-direction: normal;
-        animation-play-state: running;
-        animation-delay: 0s;
-        animation-fill-mode: none;
+.successLoadingActive {
+    animation-name: successLoading;
+    animation-duration: 3.4s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-play-state: running;
+    animation-delay: 0s;
+    animation-fill-mode: none;
 }
 
 @keyframes successLoading {
-    0%{
+    0% {
         margin-bottom: -450px;
     }
-    50%{
+    50% {
         margin-bottom: 0;
     }
-    100%{
+    100% {
         margin-bottom: -450px;
     }
 }
 
-
-
-
 .main {
-
     &__search {
         margin-bottom: 30px;
     }
 
     &__searchInput {
         width: 100%;
-        border: 1px solid gray;
+        border: 2px solid red;
         padding: 14px;
         border-radius: 14px;
     }
@@ -286,7 +263,6 @@ textarea{
         border: 1px solid gray;
         max-height: 600px;
         overflow: auto;
-        
     }
 
     &__catalogItem {
@@ -316,8 +292,7 @@ textarea{
         flex: 0 0 20%;
         text-align: center;
     }
-    &__catalogItemProgressbar{
-
+    &__catalogItemProgressbar {
         // border: 2px solid green;
         // color: green;
         // padding: 5px;
@@ -325,79 +300,71 @@ textarea{
     }
 }
 
-.greenDone{
+.greenDone {
     border: 2px solid green;
     color: green;
     padding: 5px;
     border-radius: 10px;
 }
 
-.yellowInWork{
+.yellowInWork {
     border: 2px solid rgb(184, 184, 57);
     color: rgb(184, 184, 57);
     padding: 5px;
     border-radius: 10px;
 }
 
-.blueNewQuery{
+.blueNewQuery {
     border: 2px solid rgb(57, 116, 184);
     color: rgb(57, 116, 184);
     padding: 5px;
     border-radius: 10px;
 }
 
-
-.slider__row{
+.slider__row {
     display: flex;
-    
-    
 }
-.main{
+.main {
     width: 1200px;
     margin: 0 auto;
     flex: 0 0 100%;
 }
 
-.slider{
+.slider {
     width: 1200px;
     overflow: hidden;
 }
 
-.columns__row{
+.columns__row {
     display: flex;
     justify-content: space-between;
 }
-.columns__column{
+.columns__column {
     flex: 0 1 49%;
 }
 body {
-    background: url('../img/wallpaperflare.jpg') center no-repeat;
+    background: url("../img/wallpaperflare.jpg") center no-repeat;
     object-fit: contain;
-    
 }
 
-label{
+label {
     color: rgb(12, 100, 100);
 }
 
-@media (hover: none){
+@media (hover: none) {
     body {
-            background: url('../img/wallpaperflare.jpg') center / auto 100% no-repeat;
-            object-fit: contain;
-    
-        }
+        background: url("../img/wallpaperflare.jpg") center / auto 100%
+            no-repeat;
+        object-fit: contain;
+    }
     .columns__row {
-        
-            display: block;
+        display: block;
+    }
 
-        }
-
-
-    .main__catalogItem{
+    .main__catalogItem {
         display: flex;
         flex-direction: column;
     }
-    
 }
 
 .btn__submitStyle {
@@ -407,7 +374,8 @@ label{
     background-color: #274152;
     font-size: 18px;
     padding: 10px 45px;
-    transition: background-color 0.3s ease-in-out 0s, transform 0.3s ease-in-out 0s;
+    transition: background-color 0.3s ease-in-out 0s,
+        transform 0.3s ease-in-out 0s;
     cursor: pointer;
     margin-right: 14px;
 
