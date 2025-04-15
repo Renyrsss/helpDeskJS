@@ -7,7 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let checkedOrNot = document.querySelector(".checkedOrNot");
     let inputsRadio = document.querySelectorAll(".inputMar");
     let imageContainer = document.getElementsByTagName("body");
-    let userDataQuery = getUsersQuery();
+    // let userDataQuery = getUsersQuery();
+    let userDataQuery;
     let radioInput = document.querySelectorAll(".radioInput");
     let inputs = document.querySelectorAll(".main__inputs");
     let textArea = document.querySelector("textarea");
@@ -103,10 +104,10 @@ document.addEventListener("DOMContentLoaded", function () {
                 })
                 .then(() => {
                     userDataQuery = "";
-                    userDataQuery = getUsersQuery();
+                    // userDataQuery = getUsersQuery();
                 })
                 .then(() => {
-                    queryListAdd();
+                    // queryListAdd();
                 })
                 .catch((err) => {
                     console.log(err);
@@ -235,55 +236,55 @@ function checkInputs(inputs, textArea, checkedOrNot, inputsRadio) {
     return res;
 }
 
-async function getUsersQuery() {
-    let userObj = [];
+// async function getUsersQuery() {
+//     let userObj = [];
 
-    axios
-        .get(
-            "http://192.168.101.25:1337/api/bahadors?pagination[pageSize]=1000&sort=createdAt:desc"
-        )
-        .then(function (res) {
-            res.data["data"].map((item) => {
-                userObj.push(item.attributes);
-            });
-        });
-    axios
-        .get(
-            "http://192.168.101.25:1337/api/ernar-and-timurs?pagination[pageSize]=1000&sort=createdAt:desc"
-        )
-        .then(function (res) {
-            res.data["data"].map((item) => {
-                userObj.push(item.attributes);
-            });
-        });
-    await axios
-        .get(
-            "http://192.168.101.25:1337/api/kuats?pagination[pageSize]=1000&sort=createdAt:desc"
-        )
-        .then(function (res) {
-            res.data["data"].map((item) => {
-                userObj.push(item.attributes);
-            });
-        });
+//     axios
+//         .get(
+//             "http://192.168.101.25:1337/api/bahadors?pagination[pageSize]=1000&sort=createdAt:desc"
+//         )
+//         .then(function (res) {
+//             res.data["data"].map((item) => {
+//                 userObj.push(item.attributes);
+//             });
+//         });
+//     axios
+//         .get(
+//             "http://192.168.101.25:1337/api/ernar-and-timurs?pagination[pageSize]=1000&sort=createdAt:desc"
+//         )
+//         .then(function (res) {
+//             res.data["data"].map((item) => {
+//                 userObj.push(item.attributes);
+//             });
+//         });
+//     await axios
+//         .get(
+//             "http://192.168.101.25:1337/api/kuats?pagination[pageSize]=1000&sort=createdAt:desc"
+//         )
+//         .then(function (res) {
+//             res.data["data"].map((item) => {
+//                 userObj.push(item.attributes);
+//             });
+//         });
 
-    axios
-        .get(
-            "http://192.168.101.25:1337/api/skud-zaprosy-help-desks?pagination[pageSize]=1000&sort=createdAt:desc"
-        )
-        .then(function (res) {
-            res.data["data"].map((item) => {
-                userObj.push(item.attributes);
-            });
-        });
-    axios
-        .get(
-            "http://192.168.101.25:1337/api/saids?pagination[pageSize]=1000&sort=createdAt:desc"
-        )
-        .then(function (res) {
-            res.data["data"].map((item) => {
-                userObj.push(item.attributes);
-            });
-        });
+//     axios
+//         .get(
+//             "http://192.168.101.25:1337/api/skud-zaprosy-help-desks?pagination[pageSize]=1000&sort=createdAt:desc"
+//         )
+//         .then(function (res) {
+//             res.data["data"].map((item) => {
+//                 userObj.push(item.attributes);
+//             });
+//         });
+//     axios
+//         .get(
+//             "http://192.168.101.25:1337/api/saids?pagination[pageSize]=1000&sort=createdAt:desc"
+//         )
+//         .then(function (res) {
+//             res.data["data"].map((item) => {
+//                 userObj.push(item.attributes);
+//             });
+//         });
 
-    return userObj;
-}
+//     return userObj;
+// }
