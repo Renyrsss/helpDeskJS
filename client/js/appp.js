@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
             let massage = `<b>Заявка  ${query}</b>\n`;
             massage += `<b>ФИО : ${inputs[1].value}</b>\n`;
             massage += `<b>Отделение : ${inputs[2].value}</b>\n`;
-            massage += `<b>Телеофн : ${inputs[0].value}</b>\n`;
+            massage += `<b>Телефон : ${inputs[0].value}</b>\n`;
             massage += `<b>Комментарий : ${textArea.value}</b>\n`;
             massage += `<b>Запрос : ${query}</b>\n`;
             axios
@@ -114,12 +114,18 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
         }
     });
+
     let searchInput = document.querySelector(".main__searchInput");
+    console.log(searchInput);
+    let phoneNumber = "";
     let userPhones = [];
     let catalog = document.querySelector(".main__catalog");
     function queryListAdd() {
         userDataQuery.then(function (res) {
             searchInput.addEventListener("input", (e) => {
+                phoneNumber = e.target.value;
+                console.log(phoneNumber);
+
                 catalog.innerHTML = ``;
                 userPhones = [];
                 res.forEach((item) => {
@@ -236,55 +242,57 @@ function checkInputs(inputs, textArea, checkedOrNot, inputsRadio) {
     return res;
 }
 
-// async function getUsersQuery() {
-//     let userObj = [];
+// let phoneData =
 
-//     axios
-//         .get(
-//             "http://192.168.101.25:1337/api/bahadors?pagination[pageSize]=1000&sort=createdAt:desc"
-//         )
-//         .then(function (res) {
-//             res.data["data"].map((item) => {
-//                 userObj.push(item.attributes);
-//             });
-//         });
-//     axios
-//         .get(
-//             "http://192.168.101.25:1337/api/ernar-and-timurs?pagination[pageSize]=1000&sort=createdAt:desc"
-//         )
-//         .then(function (res) {
-//             res.data["data"].map((item) => {
-//                 userObj.push(item.attributes);
-//             });
-//         });
-//     await axios
-//         .get(
-//             "http://192.168.101.25:1337/api/kuats?pagination[pageSize]=1000&sort=createdAt:desc"
-//         )
-//         .then(function (res) {
-//             res.data["data"].map((item) => {
-//                 userObj.push(item.attributes);
-//             });
-//         });
+async function getUsersQuery() {
+    let userObj = [];
 
-//     axios
-//         .get(
-//             "http://192.168.101.25:1337/api/skud-zaprosy-help-desks?pagination[pageSize]=1000&sort=createdAt:desc"
-//         )
-//         .then(function (res) {
-//             res.data["data"].map((item) => {
-//                 userObj.push(item.attributes);
-//             });
-//         });
-//     axios
-//         .get(
-//             "http://192.168.101.25:1337/api/saids?pagination[pageSize]=1000&sort=createdAt:desc"
-//         )
-//         .then(function (res) {
-//             res.data["data"].map((item) => {
-//                 userObj.push(item.attributes);
-//             });
-//         });
+    axios
+        .get
+        // "http://192.168.101.25:1337/api/bahadors?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=8777384"
+        ()
+        .then(function (res) {
+            res.data["data"].map((item) => {
+                userObj.push(item.attributes);
+            });
+        });
+    axios
+        .get
+        // "http://192.168.101.25:1337/api/ernar-and-timurs?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=8777384"
+        ()
+        .then(function (res) {
+            res.data["data"].map((item) => {
+                userObj.push(item.attributes);
+            });
+        });
+    await axios
+        .get
+        // "http://192.168.101.25:1337/api/kuats?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=8777384"
+        ()
+        .then(function (res) {
+            res.data["data"].map((item) => {
+                userObj.push(item.attributes);
+            });
+        });
 
-//     return userObj;
-// }
+    axios
+        .get
+        // "http://192.168.101.25:1337/api/skud-zaprosy-help-desks?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=8777384"
+        ()
+        .then(function (res) {
+            res.data["data"].map((item) => {
+                userObj.push(item.attributes);
+            });
+        });
+    axios
+        .get(
+            "http://192.168.101.25:1337/api/saids?pagination[pageSize]=1000&sort=createdAt:desc"
+        )
+        .then(function (res) {
+            res.data["data"].map((item) => {
+                userObj.push(item.attributes);
+            });
+        });
+
+    return userObj;
+}
