@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function async() {
     const token = "6515245927:AAExFk8USVwQ2IVcwtqszfutM-hqgbfp0Dg";
     let CHAT_ID;
     const URI_API = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -120,85 +120,94 @@ document.addEventListener("DOMContentLoaded", function () {
     let phoneNumber = "";
     let userPhones = [];
     let catalog = document.querySelector(".main__catalog");
-    function queryListAdd() {
-        userDataQuery.then(function (res) {
-            searchInput.addEventListener("input", (e) => {
-                phoneNumber = e.target.value;
-                console.log(phoneNumber);
+    // function queryListAdd() {
 
-                catalog.innerHTML = ``;
-                userPhones = [];
-                res.forEach((item) => {
-                    if (item.userPhone.indexOf(e.target.value) === 0) {
-                        userPhones.push(item);
+    searchInput.addEventListener("input", async (e) => {
+        phoneNumber = e.target.value;
+
+        if (phoneNumber.length >= 6) {
+            const res = await getUsersQuery(phoneNumber);
+
+            console.log(res);
+
+            catalog.innerHTML = ``;
+            userPhones = [];
+            res.map((item) => {
+                userPhones.push(item);
+            });
+            if (e.target.value.length >= 6) {
+                userPhones.forEach((item) => {
+                    let hours =
+                        " время: " +
+                        (+item.createdAt.slice(11, -11) + 5) +
+                        ":" +
+                        item.createdAt.slice(14, -8);
+                    if (item.Progress == "Сделано") {
+                        catalog.innerHTML += `
+                        <div class="main__catalogItem ">
+                            <p class="main__catalogId"> ${item.userName}</p>
+                            <p class="main__catalogDate"><span>Дата: ${item.createdAt.slice(
+                                0,
+                                -14
+                            )}</span> <br /> <span>${hours}</span></p>
+                            <p class="main__catalogItemName">${
+                                item.userQuery
+                            }</p>
+                            <p class="main__catalogItemComment">${
+                                item.userComment
+                            }</p>
+                            <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar greenDone">${
+                                item.Progress
+                            }</span></p>
+                        </div>
+                        `;
+                    } else if (item.Progress == "в работе") {
+                        catalog.innerHTML += `
+                        <div class="main__catalogItem ">
+                            <p class="main__catalogId"> ${item.userName}</p>
+                            <p class="main__catalogDate"><span>Дата: ${item.createdAt.slice(
+                                0,
+                                -14
+                            )}</span> <br /> <span>${hours}</span></p>
+                            <p class="main__catalogItemName">${
+                                item.userQuery
+                            }</p>
+                          <p class="main__catalogItemComment">${
+                              item.userComment
+                          }</p>
+                            <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar yellowInWork">${
+                                item.Progress
+                            }</span></p>
+                        </div>
+                        `;
+                    } else if (item.Progress == "Новая заявка") {
+                        catalog.innerHTML += `
+                        <div class="main__catalogItem ">
+                            <p class="main__catalogId"> ${item.userName}</p>
+                            <p class="main__catalogDate"><span>Дата: ${item.createdAt.slice(
+                                0,
+                                -14
+                            )}</span> <br /> <span>${hours}</span></p>
+                            <p class="main__catalogItemName">${
+                                item.userQuery
+                            }</p>
+                            <p class="main__catalogItemComment">${
+                                item.userComment
+                            }</p>
+                            <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar blueNewQuery">${
+                                item.Progress
+                            }</span></p>
+                        </div>
+                        `;
                     }
                 });
-                if (e.target.value.length >= 5) {
-                    userPhones.forEach((item) => {
-                        let hours =
-                            " время: " +
-                            (+item.createdAt.slice(11, -11) + 5) +
-                            ":" +
-                            item.createdAt.slice(14, -8);
-                        if (item.Progress == "Сделано") {
-                            catalog.innerHTML += `
-                    <div class="main__catalogItem ">
-                        <p class="main__catalogId"> ${item.userName}</p>
-                        <p class="main__catalogDate"><span>Дата: ${item.createdAt.slice(
-                            0,
-                            -14
-                        )}</span> <br /> <span>${hours}</span></p>
-                        <p class="main__catalogItemName">${item.userQuery}</p>
-                        <p class="main__catalogItemComment">${
-                            item.userComment
-                        }</p>
-                        <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar greenDone">${
-                            item.Progress
-                        }</span></p>
-                    </div>
-                    `;
-                        } else if (item.Progress == "в работе") {
-                            catalog.innerHTML += `
-                    <div class="main__catalogItem ">
-                        <p class="main__catalogId"> ${item.userName}</p>
-                        <p class="main__catalogDate"><span>Дата: ${item.createdAt.slice(
-                            0,
-                            -14
-                        )}</span> <br /> <span>${hours}</span></p>
-                        <p class="main__catalogItemName">${item.userQuery}</p>
-                        <p class="main__catalogItemComment">${
-                            item.userComment
-                        }</p>
-                        <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar yellowInWork">${
-                            item.Progress
-                        }</span></p>
-                    </div>
-                    `;
-                        } else if (item.Progress == "Новая заявка") {
-                            catalog.innerHTML += `
-                    <div class="main__catalogItem ">
-                        <p class="main__catalogId"> ${item.userName}</p>
-                        <p class="main__catalogDate"><span>Дата: ${item.createdAt.slice(
-                            0,
-                            -14
-                        )}</span> <br /> <span>${hours}</span></p>
-                        <p class="main__catalogItemName">${item.userQuery}</p>
-                        <p class="main__catalogItemComment">${
-                            item.userComment
-                        }</p>
-                        <p class="main__catalogItemProgress"><span class="main__catalogItemProgressbar blueNewQuery">${
-                            item.Progress
-                        }</span></p>
-                    </div>
-                    `;
-                        }
-                    });
-                }
-            });
-        });
-    }
+            }
+        }
+    });
 
-    queryListAdd();
+    // }
+
+    // queryListAdd();
 });
 
 function checkInputs(inputs, textArea, checkedOrNot, inputsRadio) {
@@ -244,49 +253,66 @@ function checkInputs(inputs, textArea, checkedOrNot, inputsRadio) {
 
 // let phoneData =
 
-async function getUsersQuery() {
+async function getUsersQuery(phoneNumberSearch) {
     let userObj = [];
 
-    axios
-        .get
-        // "http://192.168.101.25:1337/api/bahadors?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=8777384"
-        ()
-        .then(function (res) {
-            res.data["data"].map((item) => {
-                userObj.push(item.attributes);
-            });
-        });
-    axios
-        .get
-        // "http://192.168.101.25:1337/api/ernar-and-timurs?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=8777384"
-        ()
+    // await axios.get;
+    // `http://192.168.101.25:1337/api/kuats?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=${phoneNumberSearch}`().then(
+    //     function (res) {
+    //         res.data["data"].map((item) => {
+    //             userObj.push(item.attributes);
+    //         });
+    //     }
+    // );
+
+    // await axios.get;
+    // `http://192.168.101.25:1337/api/skud-zaprosy-help-desks?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=${phoneNumberSearch}`().then(
+    //     function (res) {
+    //         res.data["data"].map((item) => {
+    //             userObj.push(item.attributes);
+    //         });
+    //     }
+    // );
+
+    await axios
+        .get(
+            `http://192.168.101.25:1337/api/saids?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=${phoneNumberSearch}`
+        )
         .then(function (res) {
             res.data["data"].map((item) => {
                 userObj.push(item.attributes);
             });
         });
     await axios
-        .get
-        // "http://192.168.101.25:1337/api/kuats?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=8777384"
-        ()
-        .then(function (res) {
-            res.data["data"].map((item) => {
-                userObj.push(item.attributes);
-            });
-        });
-
-    axios
-        .get
-        // "http://192.168.101.25:1337/api/skud-zaprosy-help-desks?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=8777384"
-        ()
-        .then(function (res) {
-            res.data["data"].map((item) => {
-                userObj.push(item.attributes);
-            });
-        });
-    axios
         .get(
-            "http://192.168.101.25:1337/api/saids?pagination[pageSize]=1000&sort=createdAt:desc"
+            `http://192.168.101.25:1337/api/bahadors?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=${phoneNumberSearch}`
+        )
+        .then(function (res) {
+            res.data["data"].map((item) => {
+                userObj.push(item.attributes);
+            });
+        });
+    await axios
+        .get(
+            `http://192.168.101.25:1337/api/ernar-and-timurs?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=${phoneNumberSearch}`
+        )
+        .then(function (res) {
+            res.data["data"].map((item) => {
+                userObj.push(item.attributes);
+            });
+        });
+    await axios
+        .get(
+            `http://192.168.101.25:1337/api/kuats?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=${phoneNumberSearch}`
+        )
+        .then(function (res) {
+            res.data["data"].map((item) => {
+                userObj.push(item.attributes);
+            });
+        });
+    await axios
+        .get(
+            `http://192.168.101.25:1337/api/skud-zaprosy-help-desks?pagination[pageSize]=1000&sort=createdAt:desc&filters%5B$and%5D%5B0%5D%5BuserPhone%5D%5B$containsi%5D=${phoneNumberSearch}`
         )
         .then(function (res) {
             res.data["data"].map((item) => {
