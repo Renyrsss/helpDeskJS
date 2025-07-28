@@ -15,6 +15,68 @@ document.addEventListener("DOMContentLoaded", function async() {
     let btn = document.querySelector(".btn__submit");
     let admin = null;
 
+    document
+        .getElementById("domenForm")
+        .addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const form = e.target;
+            const data = {
+                lastName: form.lastName.value,
+                firstName: form.firstName.value,
+                middleName: form.middleName.value,
+                latinFIO: form.latinFIO.value,
+                department: form.department.value,
+                position: form.position.value,
+                mobile: form.mobile.value,
+                workPhone: form.workPhone.value,
+                birthDate: form.birthDate.value,
+                startDate: form.startDate.value,
+                comment: form.comment.value,
+            };
+
+            // Генерация текста сообщения
+            let message = `<b>Заявка на создание корпоративной доменной учетной записи</b>\n`;
+            message += `<b>Фамилия:</b> ${data.lastName}\n`;
+            message += `<b>Имя:</b> ${data.firstName}\n`;
+            message += `<b>Отчество:</b> ${data.middleName}\n`;
+            message += `<b>ФИО латиницей:</b> ${data.latinFIO}\n`;
+            message += `<b>Отдел:</b> ${data.department}\n`;
+            message += `<b>Должность:</b> ${data.position}\n`;
+            message += `<b>Мобильный:</b> ${data.mobile}\n`;
+            message += `<b>Рабочий:</b> ${data.workPhone}\n`;
+            message += `<b>Дата рождения:</b> ${data.birthDate}\n`;
+            message += `<b>Дата выхода на работу:</b> ${data.startDate}\n`;
+            message += `<b>Комментарий:</b> ${data.comment}`;
+
+            // Отправка в Telegram
+            const chat_id = -4796506377; // сюда можешь вставить нужный ID
+            const token = "6515245927:AAExFk8USVwQ2IVcwtqszfutM-hqgbfp0Dg";
+
+            axios
+                .post(`https://api.telegram.org/bot${token}/sendMessage`, {
+                    chat_id: chat_id,
+                    parse_mode: "html",
+                    text: message,
+                })
+                .then(() => {
+                    axios.post(`http://192.168.101.25:1337/api/rustams`, {
+                        data: {
+                            userName: `${data.firstName} ${data.lastName} ${data.middleName}`,
+                            userPhone: data.mobile,
+                            userSide: data.department,
+                            userComment: `Фамилия - ${data.lastName} , \n Имя - ${data.firstName} , \n Отчество - ${data.firstName} , \n фио на латинице - ${data.latinFIO}  , \n Отдел - ${data.department}  , \n Должность - ${data.position} , \n Мобильный - ${data.mobile} , \n Рабочий - ${data.workPhone}  , \n Дата рождения - ${data.birthDate} , \n Дата выхода на работу - ${data.startDate} , \n Комментарий - ${data.comment} `,
+                        },
+                    });
+                    alert("Заявка отправлена!");
+                    form.reset();
+                    closeModal();
+                })
+                .catch((err) => {
+                    console.error(err);
+                    alert("Ошибка при отправке!");
+                });
+        });
     btn.addEventListener("click", (e) => {
         e.preventDefault();
         let res = checkInputs(inputs, textArea, checkedOrNot, radioInput);
@@ -322,3 +384,19 @@ async function getUsersQuery(phoneNumberSearch) {
 
     return userObj;
 }
+
+document.getElementById("Domen").addEventListener("click", function () {
+    if (this.checked) {
+        document.getElementById("domenModal").style.display = "flex";
+    }
+});
+
+// Закрытие модалки
+function closeModal() {
+    document.getElementById("domenModal").style.display = "none";
+}
+document
+    .querySelector('[name="latinFIO"]')
+    .addEventListener("input", function () {
+        this.value = this.value.replace(/[^a-zA-Z\s]/g, "");
+    });

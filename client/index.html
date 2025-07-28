@@ -335,6 +335,24 @@
                                                             поломка</label
                                                         >
                                                     </p>
+                                                    <p class="inputMar">
+                                                        <input
+                                                            type="radio"
+                                                            name="report"
+                                                            value="Заявка на создание
+                                                            корпоративной
+                                                            доменной учетной
+                                                            записи"
+                                                            id="Domen"
+                                                            class="radioInput"
+                                                        />
+                                                        <label for="Domen"
+                                                            >Заявка на создание
+                                                            корпоративной
+                                                            доменной учетной
+                                                            записи</label
+                                                        >
+                                                    </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -398,7 +416,88 @@
                     <img src="./img/P1withCould2.png" alt="" />
                 </div>
             </section>
+            <div id="domenModal" class="modal" style="display: none">
+                <div class="modal-content">
+                    <h2>Заполните заявку</h2>
+                    <form id="domenForm">
+                        <input
+                            type="text"
+                            placeholder="Фамилия"
+                            name="lastName"
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Имя"
+                            name="firstName"
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Отчество"
+                            name="middleName"
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="ФИО на латинице - по удостоверению личности на английском"
+                            name="latinFIO"
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Отдел"
+                            name="department"
+                            required
+                        />
+                        <input
+                            type="text"
+                            placeholder="Должность"
+                            name="position"
+                            oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')"
+                            required
+                        />
+                        <input
+                            type="tel"
+                            placeholder="Мобильный телефон +7 XXX XXX XX XX"
+                            name="mobile"
+                            required
+                        />
+                        <input
+                            type="tel"
+                            placeholder="Рабочий номер"
+                            name="workPhone"
+                            required
+                        />
+                        <p>Дата рождения</p>
+                        <input
+                            type="date"
+                            placeholder="Дата рождения"
+                            name="birthDate"
+                            required
+                        />
+                        <p>Дата выхода на работу</p>
+                        <input
+                            type="date"
+                            placeholder="Дата выхода на работу"
+                            name="startDate"
+                            required
+                        />
+
+                        <textarea
+                            placeholder="Комментарии к заявке"
+                            name="comment"
+                            required
+                        ></textarea>
+                        <button type="submit">Отправить</button>
+                        <button type="button" onclick="closeModal()">
+                            Закрыть
+                        </button>
+                    </form>
+                </div>
+            </div>
         </div>
+
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
