@@ -94,7 +94,6 @@ document.addEventListener("DOMContentLoaded", function async() {
                     } else if (
                         item.id == "lis" ||
                         item.id == "mzrk" ||
-                        item.id.includes("simbase") ||
                         item.id == "Damumed"
                     ) {
                         CHAT_ID = -4169255350;
@@ -117,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function async() {
                     } else if (
                         item.id == "skud" ||
                         item.id == "skud-p" ||
-                        // item.id.includes("simbase") ||
+                        item.id.includes("simbase") ||
                         item.id == "DOC"
                     ) {
                         CHAT_ID = -4196356902;
