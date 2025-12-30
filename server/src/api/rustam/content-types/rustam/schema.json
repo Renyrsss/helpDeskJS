@@ -4,11 +4,11 @@
   "info": {
     "singularName": "rustam",
     "pluralName": "rustams",
-    "displayName": "Рустам"
+    "displayName": "Рустам",
+    "description": ""
   },
   "options": {
-    "draftAndPublish": true,
-    "populateCreatorFields": true
+    "draftAndPublish": true
   },
   "pluginOptions": {},
   "attributes": {
@@ -29,14 +29,25 @@
     },
     "Progress": {
       "type": "enumeration",
-      "enum": ["Сделано", "Новая заявка", "некорректная заявка", "в работе"]
+      "enum": [
+        "Сделано",
+        "Новая заявка",
+        "некорректная заявка",
+        "в работе"
+      ],
+      "default": "Новая заявка"
     },
     "ourComment": {
       "type": "text"
     },
     "complexity": {
       "type": "enumeration",
-      "enum": ["A", "B", "C", "D - долгосрочный"],
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D - долгосрочный"
+      ],
       "default": "C"
     }
   }

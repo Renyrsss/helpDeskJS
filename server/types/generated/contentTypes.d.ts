@@ -722,7 +722,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -750,6 +749,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'plugin::users-permissions.user',
       'manyToOne',
       'plugin::users-permissions.role'
+    >;
+    fullName: Attribute.String;
+    documents: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::document.document'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -917,6 +922,52 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
   };
 }
 
+export interface ApiDocumentDocument extends Schema.CollectionType {
+  collectionName: 'documents';
+  info: {
+    singularName: 'document';
+    pluralName: 'documents';
+    displayName: 'Document';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    originalFile: Attribute.Media & Attribute.Required;
+    currentFile: Attribute.Media;
+    status: Attribute.Enumeration<
+      ['draft', 'pending', 'in_progress', 'completed', 'cancelled']
+    > &
+      Attribute.DefaultTo<'draft'>;
+    signers: Attribute.JSON;
+    signatureSequential: Attribute.Boolean & Attribute.DefaultTo<true>;
+    creator: Attribute.Relation<
+      'api::document.document',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    signatureHistory: Attribute.JSON;
+    signatureType: Attribute.Enumeration<['simple', 'eds']>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::document.document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::document.document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiElektrikElektrik extends Schema.CollectionType {
   collectionName: 'elektriks';
   info: {
@@ -949,7 +1000,7 @@ export interface ApiElektrikElektrik extends Schema.CollectionType {
         '\u0411\u0430\u0437\u0433\u0443\u0442\u0434\u0438\u043D\u043E\u0432 \u0420\u0430\u0448\u0438\u0442 \u0420\u0430\u0444\u0430\u0438\u043B\u043E\u0432\u0438\u0447',
         '\u0410\u0431\u0435\u043D\u043E\u0432 \u0416\u0430\u043D\u0430\u0439 \u0410\u043A\u043F\u0430\u043D\u0431\u0430\u0435\u0432\u0438\u0447',
         '\u041D\u0430\u0443\u0448\u0435\u043D\u043E\u0432 \u0420\u0438\u043D\u0430\u0442 \u0411\u043E\u043B\u0430\u0442\u043E\u0432\u0438\u0447',
-        '\u0411\u0443\u043A\u0435\u043D\u043E\u0432 \u0411\u0435\u0439\u0431\u0443\u0442 \u0420\u0430\u0438\u043C\u0436\u0430\u043D\u043E\u0432\u0438\u0447 ',
+        '\u041A\u0443\u0440\u043C\u0430\u043D\u0430\u0435\u0432 \u041C\u0430\u0440\u0430\u0442 \u0428\u0430\u043A\u0438\u0440\u0436\u0430\u043D\u043E\u0432\u0438\u0447',
         '\u041C\u044B\u0440\u0437\u0430\u0431\u0435\u043A\u043E\u0432 \u041D\u0443\u0440\u0438\u0434\u0438\u043D \u0428\u0435\u0440\u0435\u0445\u0430\u043D\u043E\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
         '\u0411\u0435\u043A\u0431\u0430\u0435\u0432 \u0411\u0435\u043A\u0437\u0430\u0442 \u041A\u0430\u043B\u0438\u0443\u043B\u044B \u0414\u041A\u0425\u041E',
         '\u0411\u0443\u0445\u0430\u043D\u043E\u0432 \u0411\u0430\u0443\u0440\u0436\u0430\u043D \u0423\u0440\u0430\u0437\u0431\u0435\u043A\u043E\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
@@ -1136,7 +1187,11 @@ export interface ApiPlotnikPlotnik extends Schema.CollectionType {
       ]
     >;
     OurComment: Attribute.Text;
-    executor: Attribute.Enumeration<['test', 'test1', 'test2']>;
+    executor: Attribute.Enumeration<
+      [
+        '\u0416\u0443\u043C\u0430\u0431\u0435\u043A\u043E\u0432 \u0418\u0441\u043A\u0430\u043A \u041E\u0441\u043F\u0430\u043D\u043E\u0432\u0438\u0447 '
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1161,10 +1216,10 @@ export interface ApiRustamRustam extends Schema.CollectionType {
     singularName: 'rustam';
     pluralName: 'rustams';
     displayName: '\u0420\u0443\u0441\u0442\u0430\u043C';
+    description: '';
   };
   options: {
     draftAndPublish: true;
-    populateCreatorFields: true;
   };
   attributes: {
     userName: Attribute.String;
@@ -1179,7 +1234,8 @@ export interface ApiRustamRustam extends Schema.CollectionType {
         '\u043D\u0435\u043A\u043E\u0440\u0440\u0435\u043A\u0442\u043D\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430',
         '\u0432 \u0440\u0430\u0431\u043E\u0442\u0435'
       ]
-    >;
+    > &
+      Attribute.DefaultTo<'\u041D\u043E\u0432\u0430\u044F \u0437\u0430\u044F\u0432\u043A\u0430'>;
     ourComment: Attribute.Text;
     complexity: Attribute.Enumeration<
       [
@@ -1197,12 +1253,14 @@ export interface ApiRustamRustam extends Schema.CollectionType {
       'api::rustam.rustam',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::rustam.rustam',
       'oneToOne',
       'admin::user'
-    >;
+    > &
+      Attribute.Private;
   };
 }
 
@@ -1280,12 +1338,13 @@ export interface ApiSantehnikSantehnik extends Schema.CollectionType {
     OurComment: Attribute.Text;
     executor: Attribute.Enumeration<
       [
-        '\u041A\u0438\u043A\u0430\u044F\u0442 \u041A\u0430\u043B\u0438\u0430\u0441\u043A\u0430\u0440',
+        '\u041D\u0443\u0440\u0438\u0434\u0435\u043D\u043E\u0432 \u0414\u0430\u043C\u0438\u0440 \u0414\u0430\u0431\u044B\u043B\u0445\u0430\u043D\u0443\u043B\u044B',
         '\u041A\u0430\u0437 \u041C\u0443\u0445\u0430\u043D\u0431\u0435\u043A',
         '\u0428\u0435\u0440\u043C\u0430\u0433\u0430\u043D\u0431\u0435\u0442\u043E\u0432 \u0410\u0431\u0438\u043B\u044C \u0410\u0439\u043C\u0443\u0440\u0430\u0442\u043E\u0432\u0438\u0447',
-        '\u0421\u0443\u043F\u0435\u043A\u043E\u0432 \u0415\u0440\u0431\u043E\u043B \u0415\u043B\u044C\u0442\u0430\u0435\u0432\u0438\u0447',
-        '\u0410\u0431\u0438\u043B\u0434\u0438\u043D\u043E\u0432 \u0416\u0443\u043C\u0430\u0434\u0438\u043B\u0434\u0430 \u041A\u0430\u0440\u0442\u0430\u0435\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
-        '\u0411\u043E\u043B\u0435\u0433\u0435\u043D\u043E\u0432 \u0421\u0430\u043A\u0430\u043F\u0431\u0435\u0440\u0433\u0435\u043D \u041D\u041D\u041C\u0426'
+        '\u0415\u043B\u0435\u043C\u0431\u0430\u0435\u0432 \u0420\u0430\u043A\u044B\u043C\u0442\u0430\u0439 \u0421\u0430\u0433\u0430\u0442\u043E\u0432\u0438\u0447 \u0414\u041A\u0425\u041E',
+        '\u0411\u043E\u043B\u0435\u0433\u0435\u043D\u043E\u0432 \u0421\u0430\u043A\u0430\u043F\u0431\u0435\u0440\u0433\u0435\u043D \u041D\u041D\u041C\u0426',
+        '\u0428\u0430\u043A\u0438\u0440\u043E\u0432 \u041A\u0430\u0439\u0440\u0430\u0442 \u0417\u0435\u0439\u043D\u0443\u043B\u043E\u0432\u0438\u0447',
+        '\u041A\u0430\u043B\u0434\u044B\u0431\u0435\u043A\u043E\u0432 \u0410\u043C\u0430\u043D\u0433\u0435\u043B\u0434\u0438 \u041A\u0443\u0448\u043C\u0430\u0433\u0430\u043D\u0431\u0435\u0442\u043E\u0432\u0438\u0447 - \u0441\u0432\u0430\u0440\u0449\u0438\u043A'
       ]
     >;
     createdAt: Attribute.DateTime;
@@ -1398,6 +1457,7 @@ export interface ApiVentilyaczionshhikVentilyaczionshhik
     singularName: 'ventilyaczionshhik';
     pluralName: 'ventilyaczionshhiks';
     displayName: '\u0412\u0435\u043D\u0442\u0438\u043B\u044F\u0446\u0438\u043E\u043D\u0449\u0438\u043A';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1420,6 +1480,7 @@ export interface ApiVentilyaczionshhikVentilyaczionshhik
     OurComment: Attribute.Text;
     executor: Attribute.Enumeration<
       [
+        '\u0416\u0443\u043C\u0430\u0431\u0435\u043A\u043E\u0432 \u0418\u0441\u043A\u0430\u043A \u041E\u0441\u043F\u0430\u043D\u043E\u0432\u0438\u0447 ',
         '\u0410\u043F\u043F\u0430\u0441\u043E\u0432 \u041D\u0443\u0440\u043B\u0430\u043D \u0421\u0435\u0440\u0438\u043A\u0436\u0430\u043D\u043E\u0432\u0438\u0447',
         '\u0421\u0430\u0433\u0438\u043D\u0434\u044B\u043A\u043E\u0432 \u0411\u0435\u0440\u0438\u043A \u0421\u0443\u043B\u0442\u0430\u043D\u043E\u0432\u0438\u0447',
         '\u0420\u044B\u043A\u043E\u0432 \u0412\u0438\u0442\u0430\u043B\u0438\u0439 \u0410\u043B\u0435\u043A\u0441\u0435\u0435\u0432\u0438\u0447',
@@ -1465,6 +1526,7 @@ declare module '@strapi/types' {
       'plugin::graphs-builder.graph': PluginGraphsBuilderGraph;
       'api::aidar.aidar': ApiAidarAidar;
       'api::bahador.bahador': ApiBahadorBahador;
+      'api::document.document': ApiDocumentDocument;
       'api::elektrik.elektrik': ApiElektrikElektrik;
       'api::ernar-and-timur.ernar-and-timur': ApiErnarAndTimurErnarAndTimur;
       'api::kartridzhi.kartridzhi': ApiKartridzhiKartridzhi;

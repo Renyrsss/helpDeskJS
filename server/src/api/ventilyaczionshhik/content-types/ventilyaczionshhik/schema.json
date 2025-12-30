@@ -4,7 +4,8 @@
   "info": {
     "singularName": "ventilyaczionshhik",
     "pluralName": "ventilyaczionshhiks",
-    "displayName": "Вентиляционщик"
+    "displayName": "Вентиляционщик",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -42,6 +43,7 @@
     "executor": {
       "type": "enumeration",
       "enum": [
+        "Жумабеков Искак Оспанович ",
         "Аппасов Нурлан Серикжанович",
         "Сагиндыков Берик Султанович",
         "Рыков Виталий Алексеевич",

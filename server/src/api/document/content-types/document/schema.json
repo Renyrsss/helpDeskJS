@@ -1,0 +1,70 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documents",
+  "info": {
+    "singularName": "document",
+    "pluralName": "documents",
+    "displayName": "Document",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "originalFile": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "currentFile": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "files"
+      ]
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "draft",
+        "pending",
+        "in_progress",
+        "completed",
+        "cancelled"
+      ],
+      "default": "draft"
+    },
+    "signers": {
+      "type": "json"
+    },
+    "signatureSequential": {
+      "type": "boolean",
+      "default": true
+    },
+    "creator": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "documents"
+    },
+    "signatureHistory": {
+      "type": "json"
+    },
+    "signatureType": {
+      "type": "enumeration",
+      "enum": [
+        "simple",
+        "eds"
+      ]
+    }
+  }
+}

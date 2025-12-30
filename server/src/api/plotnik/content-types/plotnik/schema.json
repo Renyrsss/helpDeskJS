@@ -42,9 +42,7 @@
     "executor": {
       "type": "enumeration",
       "enum": [
-        "test",
-        "test1",
-        "test2"
+        "Жумабеков Искак Оспанович "
       ]
     }
   }
