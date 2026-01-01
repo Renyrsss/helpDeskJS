@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "signed_documents",
+  "info": {
+    "singularName": "signed-document",
+    "pluralName": "signed-documents",
+    "displayName": "signed-document"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "userName": {
+      "type": "string",
+      "required": true
+    },
+    "userIIN": {
+      "type": "string",
+      "required": true
+    },
+    "userPhone": {
+      "type": "string"
+    },
+    "userEmail": {
+      "type": "string"
+    },
+    "consent_form": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::consent-form.consent-form",
+      "inversedBy": "signed_documents"
+    },
+    "signedFile": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "userPhoto": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "signedAt": {
+      "type": "datetime"
+    }
+  }
+}

@@ -922,6 +922,46 @@ export interface ApiBahadorBahador extends Schema.CollectionType {
   };
 }
 
+export interface ApiConsentFormConsentForm extends Schema.CollectionType {
+  collectionName: 'consent_forms';
+  info: {
+    singularName: 'consent-form';
+    pluralName: 'consent-forms';
+    displayName: 'consent-form';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    slug: Attribute.UID<'api::consent-form.consent-form', 'title'>;
+    contentRu: Attribute.RichText;
+    contentKz: Attribute.RichText;
+    contentEn: Attribute.RichText;
+    isActive: Attribute.Boolean & Attribute.DefaultTo<true>;
+    signed_documents: Attribute.Relation<
+      'api::consent-form.consent-form',
+      'oneToMany',
+      'api::signed-document.signed-document'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::consent-form.consent-form',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::consent-form.consent-form',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDocumentDocument extends Schema.CollectionType {
   collectionName: 'documents';
   info: {
@@ -1365,6 +1405,47 @@ export interface ApiSantehnikSantehnik extends Schema.CollectionType {
   };
 }
 
+export interface ApiSignedDocumentSignedDocument extends Schema.CollectionType {
+  collectionName: 'signed_documents';
+  info: {
+    singularName: 'signed-document';
+    pluralName: 'signed-documents';
+    displayName: 'signed-document';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    userName: Attribute.String & Attribute.Required;
+    userIIN: Attribute.String & Attribute.Required;
+    userPhone: Attribute.String;
+    userEmail: Attribute.String;
+    consent_form: Attribute.Relation<
+      'api::signed-document.signed-document',
+      'manyToOne',
+      'api::consent-form.consent-form'
+    >;
+    signedFile: Attribute.Media;
+    userPhoto: Attribute.Media;
+    signedAt: Attribute.DateTime;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::signed-document.signed-document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::signed-document.signed-document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk
   extends Schema.CollectionType {
   collectionName: 'skud_zaprosy_help_desks';
@@ -1526,6 +1607,7 @@ declare module '@strapi/types' {
       'plugin::graphs-builder.graph': PluginGraphsBuilderGraph;
       'api::aidar.aidar': ApiAidarAidar;
       'api::bahador.bahador': ApiBahadorBahador;
+      'api::consent-form.consent-form': ApiConsentFormConsentForm;
       'api::document.document': ApiDocumentDocument;
       'api::elektrik.elektrik': ApiElektrikElektrik;
       'api::ernar-and-timur.ernar-and-timur': ApiErnarAndTimurErnarAndTimur;
@@ -1535,6 +1617,7 @@ declare module '@strapi/types' {
       'api::rustam.rustam': ApiRustamRustam;
       'api::said.said': ApiSaidSaid;
       'api::santehnik.santehnik': ApiSantehnikSantehnik;
+      'api::signed-document.signed-document': ApiSignedDocumentSignedDocument;
       'api::skud-zaprosy-help-desk.skud-zaprosy-help-desk': ApiSkudZaprosyHelpDeskSkudZaprosyHelpDesk;
       'api::tekst-dlya-dokumenta-qr.tekst-dlya-dokumenta-qr': ApiTekstDlyaDokumentaQrTekstDlyaDokumentaQr;
       'api::ventilyaczionshhik.ventilyaczionshhik': ApiVentilyaczionshhikVentilyaczionshhik;
