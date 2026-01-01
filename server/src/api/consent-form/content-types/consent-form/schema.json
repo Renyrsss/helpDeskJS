@@ -4,7 +4,8 @@
   "info": {
     "singularName": "consent-form",
     "pluralName": "consent-forms",
-    "displayName": "consent-form"
+    "displayName": "consent-form",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -37,6 +38,15 @@
       "relation": "oneToMany",
       "target": "api::signed-document.signed-document",
       "mappedBy": "consent_form"
+    },
+    "titleRu": {
+      "type": "string"
+    },
+    "titleKz": {
+      "type": "string"
+    },
+    "titleEn": {
+      "type": "string"
     }
   }
 }

@@ -928,6 +928,7 @@ export interface ApiConsentFormConsentForm extends Schema.CollectionType {
     singularName: 'consent-form';
     pluralName: 'consent-forms';
     displayName: 'consent-form';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -944,6 +945,9 @@ export interface ApiConsentFormConsentForm extends Schema.CollectionType {
       'oneToMany',
       'api::signed-document.signed-document'
     >;
+    titleRu: Attribute.String;
+    titleKz: Attribute.String;
+    titleEn: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
