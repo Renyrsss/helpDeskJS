@@ -73,6 +73,12 @@
       "relation": "oneToMany",
       "target": "api::document.document",
       "mappedBy": "creator"
+    },
+    "assigned_documents": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::document.document",
+      "mappedBy": "assigned_users"
     }
   }
 }

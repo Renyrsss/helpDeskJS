@@ -756,6 +756,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::document.document'
     >;
+    assigned_documents: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'manyToMany',
+      'api::document.document'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -994,6 +999,11 @@ export interface ApiDocumentDocument extends Schema.CollectionType {
     >;
     signatureHistory: Attribute.JSON;
     signatureType: Attribute.Enumeration<['simple', 'eds']>;
+    assigned_users: Attribute.Relation<
+      'api::document.document',
+      'manyToMany',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
