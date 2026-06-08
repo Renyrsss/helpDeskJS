@@ -2,6 +2,8 @@ document.addEventListener("DOMContentLoaded", function async() {
     const token = "6515245927:AAExFk8USVwQ2IVcwtqszfutM-hqgbfp0Dg";
     let CHAT_ID;
     const URI_API = `https://api.telegram.org/bot${token}/sendMessage`;
+    const CORP_HELPDESK_LEGACY_URL =
+        "http://192.168.101.25:12010/api/tickets/legacy/submit";
     let success = document.querySelector(".success");
     let successImg = document.querySelector(".success__img");
     let checkedOrNot = document.querySelector(".checkedOrNot");
@@ -14,6 +16,17 @@ document.addEventListener("DOMContentLoaded", function async() {
     let textArea = document.querySelector("textarea");
     let btn = document.querySelector(".btn__submit");
     let admin = null;
+
+    function postToCorpHelpdesk(payload) {
+        return axios
+            .post(CORP_HELPDESK_LEGACY_URL, payload)
+            .then((res) => {
+                console.log("Заявка продублирована в корп-систему", res.data);
+            })
+            .catch((err) => {
+                console.warn("Не удалось продублировать заявку в корп-систему", err);
+            });
+    }
 
     document
         .getElementById("domenForm")
@@ -60,14 +73,26 @@ document.addEventListener("DOMContentLoaded", function async() {
                     text: message,
                 })
                 .then(() => {
-                    axios.post(`http://192.168.101.25:1337/api/rustams`, {
+                    const legacyPayload = {
+                        userName: `${data.firstName} ${data.lastName} ${data.middleName}`,
+                        userPhone: data.mobile,
+                        userSide: data.department,
+                        userComment: `Фамилия - ${data.lastName} , \n Имя - ${data.firstName} , \n Отчество - ${data.firstName} , \n фио на латинице - ${data.latinFIO}  , \n Отдел - ${data.department}  , \n Должность - ${data.position} , \n Мобильный - ${data.mobile} , \n Рабочий - ${data.workPhone}  , \n Дата рождения - ${data.birthDate} , \n Дата выхода на работу - ${data.startDate} , \n Комментарий - ${data.comment} `,
+                        userQuery:
+                            "Заявка на создание корпоративной доменной учетной записи",
+                        legacyCategoryId: "Domen",
+                        legacyEndpoint: "/api/rustams",
+                    };
+                    return axios.post(`http://192.168.101.25:1337/api/rustams`, {
                         data: {
-                            userName: `${data.firstName} ${data.lastName} ${data.middleName}`,
-                            userPhone: data.mobile,
-                            userSide: data.department,
-                            userComment: `Фамилия - ${data.lastName} , \n Имя - ${data.firstName} , \n Отчество - ${data.firstName} , \n фио на латинице - ${data.latinFIO}  , \n Отдел - ${data.department}  , \n Должность - ${data.position} , \n Мобильный - ${data.mobile} , \n Рабочий - ${data.workPhone}  , \n Дата рождения - ${data.birthDate} , \n Дата выхода на работу - ${data.startDate} , \n Комментарий - ${data.comment} `,
+                            userName: legacyPayload.userName,
+                            userPhone: legacyPayload.userPhone,
+                            userSide: legacyPayload.userSide,
+                            userComment: legacyPayload.userComment,
                         },
-                    });
+                    }).then(() => postToCorpHelpdesk(legacyPayload));
+                })
+                .then(() => {
                     alert("Заявка отправлена!");
                     form.reset();
                     closeModal();
@@ -83,9 +108,11 @@ document.addEventListener("DOMContentLoaded", function async() {
         console.log(res);
         if (res) {
             let query;
+            let legacyCategoryId;
             radioInput.forEach((item) => {
                 if (item.checked) {
                     query = item.value;
+                    legacyCategoryId = item.id;
                     console.log(item);
                     if (item.id == "MIS" || item.id == "1C") {
                         CHAT_ID = 203995378;
@@ -125,6 +152,13 @@ document.addEventListener("DOMContentLoaded", function async() {
                     }
                 }
             });
+            if (!admin) {
+                console.warn(
+                    "Для выбранной категории используется отдельная форма",
+                    legacyCategoryId
+                );
+                return;
+            }
 
             let massage = `<b>Заявка  ${query}</b>\n`;
             massage += `<b>ФИО : ${inputs[1].value}</b>\n`;
@@ -132,17 +166,29 @@ document.addEventListener("DOMContentLoaded", function async() {
             massage += `<b>Телефон : ${inputs[0].value}</b>\n`;
             massage += `<b>Комментарий : ${textArea.value}</b>\n`;
             massage += `<b>Запрос : ${query}</b>\n`;
+            const legacyPayload = {
+                userName: inputs[1].value,
+                userPhone: inputs[0].value,
+                userSide: inputs[2].value,
+                userComment: textArea.value,
+                userQuery: query,
+                legacyCategoryId,
+                legacyEndpoint: admin,
+            };
+
             axios
                 .post(`http://192.168.101.25:1337${admin}`, {
                     data: {
-                        userName: inputs[1].value,
-                        userPhone: inputs[0].value,
-                        userSide: inputs[2].value,
-                        userComment: textArea.value,
-                        userQuery: query,
+                        userName: legacyPayload.userName,
+                        userPhone: legacyPayload.userPhone,
+                        userSide: legacyPayload.userSide,
+                        userComment: legacyPayload.userComment,
+                        userQuery: legacyPayload.userQuery,
                     },
                 })
                 .then((res) => {
+                    postToCorpHelpdesk(legacyPayload);
+
                     inputs.forEach((item) => (item.value = ""));
                     textArea.value = "";
                     success.style.display = "block";
