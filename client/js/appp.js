@@ -22,9 +22,6 @@ document.addEventListener("DOMContentLoaded", function async() {
             .post(CORP_HELPDESK_LEGACY_URL, payload)
             .then((res) => {
                 console.log("Заявка продублирована в корп-систему", res.data);
-            })
-            .catch((err) => {
-                console.warn("Не удалось продублировать заявку в корп-систему", err);
             });
     }
 
@@ -66,32 +63,33 @@ document.addEventListener("DOMContentLoaded", function async() {
             const chat_id = -4796506377; // сюда можешь вставить нужный ID
             const token = "6515245927:AAExFk8USVwQ2IVcwtqszfutM-hqgbfp0Dg";
 
-            axios
-                .post(`https://api.telegram.org/bot${token}/sendMessage`, {
+            const legacyPayload = {
+                userName: `${data.firstName} ${data.lastName} ${data.middleName}`,
+                userPhone: data.mobile,
+                userSide: data.department,
+                userComment: `Фамилия - ${data.lastName} , \n Имя - ${data.firstName} , \n Отчество - ${data.firstName} , \n фио на латинице - ${data.latinFIO}  , \n Отдел - ${data.department}  , \n Должность - ${data.position} , \n Мобильный - ${data.mobile} , \n Рабочий - ${data.workPhone}  , \n Дата рождения - ${data.birthDate} , \n Дата выхода на работу - ${data.startDate} , \n Комментарий - ${data.comment} `,
+                userQuery:
+                    "Заявка на создание корпоративной доменной учетной записи",
+                legacyCategoryId: "Domen",
+                legacyEndpoint: "/api/rustams",
+            };
+
+            Promise.all([
+                axios.post(`https://api.telegram.org/bot${token}/sendMessage`, {
                     chat_id: chat_id,
                     parse_mode: "html",
                     text: message,
-                })
-                .then(() => {
-                    const legacyPayload = {
-                        userName: `${data.firstName} ${data.lastName} ${data.middleName}`,
-                        userPhone: data.mobile,
-                        userSide: data.department,
-                        userComment: `Фамилия - ${data.lastName} , \n Имя - ${data.firstName} , \n Отчество - ${data.firstName} , \n фио на латинице - ${data.latinFIO}  , \n Отдел - ${data.department}  , \n Должность - ${data.position} , \n Мобильный - ${data.mobile} , \n Рабочий - ${data.workPhone}  , \n Дата рождения - ${data.birthDate} , \n Дата выхода на работу - ${data.startDate} , \n Комментарий - ${data.comment} `,
-                        userQuery:
-                            "Заявка на создание корпоративной доменной учетной записи",
-                        legacyCategoryId: "Domen",
-                        legacyEndpoint: "/api/rustams",
-                    };
-                    return axios.post(`http://192.168.101.25:1337/api/rustams`, {
-                        data: {
-                            userName: legacyPayload.userName,
-                            userPhone: legacyPayload.userPhone,
-                            userSide: legacyPayload.userSide,
-                            userComment: legacyPayload.userComment,
-                        },
-                    }).then(() => postToCorpHelpdesk(legacyPayload));
-                })
+                }),
+                axios.post(`http://192.168.101.25:1337/api/rustams`, {
+                    data: {
+                        userName: legacyPayload.userName,
+                        userPhone: legacyPayload.userPhone,
+                        userSide: legacyPayload.userSide,
+                        userComment: legacyPayload.userComment,
+                    },
+                }),
+                postToCorpHelpdesk(legacyPayload),
+            ])
                 .then(() => {
                     alert("Заявка отправлена!");
                     form.reset();
@@ -176,8 +174,8 @@ document.addEventListener("DOMContentLoaded", function async() {
                 legacyEndpoint: admin,
             };
 
-            axios
-                .post(`http://192.168.101.25:1337${admin}`, {
+            Promise.all([
+                axios.post(`http://192.168.101.25:1337${admin}`, {
                     data: {
                         userName: legacyPayload.userName,
                         userPhone: legacyPayload.userPhone,
@@ -185,25 +183,19 @@ document.addEventListener("DOMContentLoaded", function async() {
                         userComment: legacyPayload.userComment,
                         userQuery: legacyPayload.userQuery,
                     },
-                })
+                }),
+                postToCorpHelpdesk(legacyPayload),
+                axios.post(URI_API, {
+                    chat_id: CHAT_ID,
+                    parse_mode: "html",
+                    text: massage,
+                }),
+            ])
                 .then((res) => {
-                    postToCorpHelpdesk(legacyPayload);
-
                     inputs.forEach((item) => (item.value = ""));
                     textArea.value = "";
                     success.style.display = "block";
                     successImg.classList.add("successLoadingActive");
-
-                    axios
-                        .post(URI_API, {
-                            chat_id: CHAT_ID,
-                            parse_mode: "html",
-                            text: massage,
-                        })
-                        .then((res) => {})
-                        .catch((err) => {
-                            console.log(err);
-                        });
 
                     setTimeout(() => {
                         success.style.display = "none";
@@ -219,6 +211,7 @@ document.addEventListener("DOMContentLoaded", function async() {
                 })
                 .catch((err) => {
                     console.log(err);
+                    alert("Ошибка при отправке!");
                 });
         }
     });
